@@ -1,0 +1,3 @@
+C:/git_shit/aoc/2021/day6/cmake-build-debug/CMakeFiles/day6.dir
+C:/git_shit/aoc/2021/day6/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/git_shit/aoc/2021/day6/cmake-build-debug/CMakeFiles/rebuild_cache.dir
