@@ -32,7 +32,6 @@ int main() {
                 array[i]--;
             }
         }
-        printf("\n");
     }
 
     printf("%d",length);
