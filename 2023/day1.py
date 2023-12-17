@@ -12,7 +12,7 @@ def parse_number(num: str):
 
 
 if __name__ == "__main__":
-    with open('day1.txt', 'r') as file:
+    with open('day1.data', 'r') as file:
         data = file.read().split('\n')
 
     solution_part1, solution_part2 = 0, 0
