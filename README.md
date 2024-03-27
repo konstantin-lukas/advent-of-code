@@ -1,6 +1,6 @@
 # Advent of Code
 These are my solutions to the advent of code. I've been doing advent of code even before this public github repo. I mainly do advent of code to learn new languages.
-
+```
       \__    __/
       /_/ /\ \_\
      __ \ \/ / __
@@ -11,3 +11,4 @@ These are my solutions to the advent of code. I've been doing advent of code eve
       __/ /\ \__
       \_\ \/ /_/
       /        \
+```
