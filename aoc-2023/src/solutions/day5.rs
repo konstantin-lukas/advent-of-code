@@ -1,6 +1,5 @@
-use std::fs;
 use std::cmp::{max, min};
-
+use crate::utils::load_data;
 
 fn map_seed(seed: i64, map: &Vec<(i64, i64, i64)>) -> i64 {
     for value in map {
@@ -11,8 +10,8 @@ fn map_seed(seed: i64, map: &Vec<(i64, i64, i64)>) -> i64 {
     return seed;
 }
 
-fn main() {
-    let data = fs::read_to_string("day5.data").expect("Unable to read file");
+pub fn run() {
+    let data = load_data(5);
     let data = data.split("\n\n").map(String::from);
     let mut maps: [Vec<(i64, i64, i64)>; 7] = Default::default();
     let mut seeds: Vec<i64> = vec![];
@@ -51,10 +50,14 @@ fn main() {
         locations.push(seed);
     }
     let minimum = locations.iter().min().unwrap();
-    println!("{}", minimum);
+    println!("DAY 5, PART 1: {minimum}");
 
     // PART 2
-    let mut seeds: Vec<(i64, i64)> = seeds.chunks(2).map(|chunk| (chunk[0], chunk[0] + chunk[1])).collect();
+    let mut seeds: Vec<(i64, i64)> = seeds
+        .chunks(2)
+        .map(|chunk| {
+            (chunk[0], chunk[0] + chunk[1])
+        }).collect();
     for map in &maps {
         let mut overlaps: Vec<(i64, i64)> = vec![];
         while seeds.len() > 0 {
@@ -88,7 +91,7 @@ fn main() {
     }
 
     if let Some(min_tuple) = seeds.iter().min_by_key(|&(first, _)| first) {
-        println!("{}",min_tuple.0);
+        println!("DAY 5, PART 2: {}",min_tuple.0);
     }
 
 
