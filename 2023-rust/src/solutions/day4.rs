@@ -25,8 +25,8 @@ fn get_scratchcards(t: &(Vec<u32>, Vec<u32>), i: usize, d: &Vec<(Vec<u32>, Vec<u
     return c;
 }
 
-pub fn run() {
-    let data = load_data(4);
+pub fn run(test: bool) -> (u32, u32) {
+    let data = load_data(4, test);
     let data: Vec<(Vec<u32>, Vec<u32>)> = data.split('\n').map(|x| {
         let numbers = &x[x.chars().position(|c| c == ':').unwrap() + 1..];
         let numbers: Vec<&str> = numbers
@@ -52,7 +52,5 @@ pub fn run() {
         part2 += get_scratchcards(numbers, i, &data) + 1;
     }
 
-    println!("DAY 4, PART 1: {part1}");
-    println!("DAY 4, PART 2: {part2}");
-
+    (part1, part2)
 }

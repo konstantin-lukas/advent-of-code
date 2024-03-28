@@ -10,8 +10,8 @@ fn map_seed(seed: i64, map: &Vec<(i64, i64, i64)>) -> i64 {
     return seed;
 }
 
-pub fn run() {
-    let data = load_data(5);
+pub fn run(test: bool) -> (i64, i64) {
+    let data = load_data(5, test);
     let data = data.split("\n\n").map(String::from);
     let mut maps: [Vec<(i64, i64, i64)>; 7] = Default::default();
     let mut seeds: Vec<i64> = vec![];
@@ -50,7 +50,6 @@ pub fn run() {
         locations.push(seed);
     }
     let minimum = locations.iter().min().unwrap();
-    println!("DAY 5, PART 1: {minimum}");
 
     // PART 2
     let mut seeds: Vec<(i64, i64)> = seeds
@@ -90,11 +89,9 @@ pub fn run() {
         seeds = overlaps;
     }
 
-    if let Some(min_tuple) = seeds.iter().min_by_key(|&(first, _)| first) {
-        println!("DAY 5, PART 2: {}",min_tuple.0);
-    }
+    let min_tuple = seeds.iter().min_by_key(|&(first, _)| first).unwrap();
 
 
-    //println!("{}", seed);
+    (*minimum, min_tuple.0)
 
 }
