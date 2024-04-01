@@ -1,5 +1,11 @@
 use crate::utils::load_data;
 
+///!
+///! # WARNING
+///! This part of the code was originally written in Python and was just moved over to Rust.
+///! Code quality might not be optimal
+///!
+
 fn get_correct_numbers(numbers: &(Vec<u32>, Vec<u32>)) -> u32 {
     let mut c = 0;
     for holding in &numbers.1 {

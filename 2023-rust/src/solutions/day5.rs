@@ -1,6 +1,12 @@
 use std::cmp::{max, min};
 use crate::utils::load_data;
 
+///!
+///! # WARNING
+///! This part of the code was originally written in Python and was just moved over to Rust.
+///! Code quality might not be optimal
+///!
+
 fn map_seed(seed: i64, map: &Vec<(i64, i64, i64)>) -> i64 {
     for value in map {
         if seed >= value.0 && seed < value.0 + value.2 {
