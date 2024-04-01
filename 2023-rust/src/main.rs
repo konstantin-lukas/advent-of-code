@@ -2,6 +2,9 @@ pub mod utils;
 pub mod solutions;
 
 fn main() {
+    let (part1, part2) = solutions::day1::run(false);
+    println!("DAY 1, PART 1: {part1}");
+    println!("DAY 1, PART 2: {part2}");
     let (part1, part2) = solutions::day2::run(false);
     println!("DAY 2, PART 1: {part1}");
     println!("DAY 2, PART 2: {part2}");
@@ -19,6 +22,12 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use crate::solutions;
+    #[test]
+    fn day1() {
+        let (part1, part2) = solutions::day1::run(true);
+        assert_eq!(part1, 297);
+        assert_eq!(part2, 281);
+    }
     #[test]
     fn day2() {
         let (part1, part2) = solutions::day2::run(true);
