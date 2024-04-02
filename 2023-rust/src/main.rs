@@ -17,6 +17,9 @@ fn main() {
     let (part1, part2) = solutions::day5::run(false);
     println!("DAY 5, PART 1: {part1}");
     println!("DAY 5, PART 2: {part2}");
+    let (part1, part2) = solutions::day6::run(false);
+    println!("DAY 6, PART 1: {part1}");
+    println!("DAY 6, PART 2: {part2}");
 }
 
 #[cfg(test)]
@@ -51,5 +54,11 @@ mod tests {
         let (part1, part2) = solutions::day5::run(true);
         assert_eq!(part1, 35);
         assert_eq!(part2, 46);
+    }
+    #[test]
+    fn day6() {
+        let (part1, part2) = solutions::day6::run(true);
+        assert_eq!(part1, 288);
+        assert_eq!(part2, 71503);
     }
 }
