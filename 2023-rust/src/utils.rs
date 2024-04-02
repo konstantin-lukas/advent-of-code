@@ -12,10 +12,10 @@ pub fn load_data(day: i8, test: bool) -> String {
 pub fn time() {
 
     let readme = fs::read_to_string("../README.md").unwrap();
-    let split: Vec<_> = readme.split("### 2023\n").collect();
+    let split: Vec<_> = readme.split("### 2023 (Rust)\n").collect();
     assert_eq!(split.len(), 2);
     let mut new_readme = String::from(split[0]);
-    new_readme.push_str("### 2023\n| Day | Fastest Time | Code |\n|---|---|---|\n");
+    new_readme.push_str("### 2023 (Rust)\n| Day | Fastest Time | Code |\n|---|---|---|\n");
     let rows: Vec<_> = split[1].split('\n').skip(2).collect();
 
 

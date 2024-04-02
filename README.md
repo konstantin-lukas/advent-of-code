@@ -27,7 +27,7 @@ These are my solutions to the advent of code. I've been doing advent of code eve
 ```
 
 ## Benchmarks
-### 2023
+### 2023 (Rust)
 | Day | Fastest Time | Code |
 |---|---|---|
 | 1 | 1.1ms <!-- 1027000 --> | [day1.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day1.rs) |
