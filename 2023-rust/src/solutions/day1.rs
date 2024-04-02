@@ -23,7 +23,7 @@ fn parse_number(num: &str) -> String {
     num.to_string()
 }
 
-pub fn run(test: bool) -> (u32, u32) {
+pub fn run(test: bool) -> (i64, i64) {
     let data = load_data(1, test);
     let data = data.split('\n');
     let mut part1 = 0;
@@ -42,14 +42,14 @@ pub fn run(test: bool) -> (u32, u32) {
             let last = digit_regex.find_iter(datum).last().unwrap();
             let mut s = String::from(datum.get(first.start()..first.end()).unwrap());
             s.push_str(datum.get(last.start()..last.end()).unwrap());
-            part1 += s.parse::<u32>().unwrap();
+            part1 += s.parse::<i64>().unwrap();
             let first = number_word_regex.find_iter(datum).next().unwrap();
             let rev = datum.chars().rev().collect::<String>();
             let last = number_word_regex_reverse.find_iter(rev.as_str()).next().unwrap();
             let mut s = parse_number(datum.get(first.start()..first.end()).unwrap());
             let combined: String = rev.get(last.start()..last.end()).unwrap().chars().rev().collect();
             s.push_str(parse_number(combined.as_str()).as_str());
-            if let Ok(x) = s.parse::<u32>() {
+            if let Ok(x) = s.parse::<i64>() {
                 part2 += x;
             }
         }

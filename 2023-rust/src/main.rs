@@ -20,6 +20,7 @@ fn main() {
     let (part1, part2) = solutions::day6::run(false);
     println!("DAY 6, PART 1: {part1}");
     println!("DAY 6, PART 2: {part2}");
+    utils::time();
 }
 
 #[cfg(test)]

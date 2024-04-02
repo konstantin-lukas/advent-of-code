@@ -8,7 +8,7 @@ use fancy_regex::Regex;
 ///!
 
 
-pub fn run(test: bool) -> (u32, u32) {
+pub fn run(test: bool) -> (i64, i64) {
     let data = load_data(2, test);
     let data = data.split('\n');
     let max_reds = 12;
@@ -35,7 +35,7 @@ pub fn run(test: bool) -> (u32, u32) {
             if let Some(r) = reds {
                 let red_count = round.get(r.start()..r.end());
                 if let Some(red_count) = red_count {
-                    let red_count = red_count.parse::<u32>().unwrap();
+                    let red_count = red_count.parse::<i64>().unwrap();
                     if red_count > least_amount_of_reds {
                         least_amount_of_reds = red_count;
                     }
@@ -47,7 +47,7 @@ pub fn run(test: bool) -> (u32, u32) {
             if let Some(g) = greens {
                 let green_count = round.get(g.start()..g.end());
                 if let Some(green_count) = green_count {
-                    let green_count = green_count.parse::<u32>().unwrap();
+                    let green_count = green_count.parse::<i64>().unwrap();
                     if green_count > least_amount_of_greens {
                         least_amount_of_greens = green_count;
                     }
@@ -59,7 +59,7 @@ pub fn run(test: bool) -> (u32, u32) {
             if let Some(b) = blues {
                 let blue_count = round.get(b.start()..b.end());
                 if let Some(blue_count) = blue_count {
-                    let blue_count = blue_count.parse::<u32>().unwrap();
+                    let blue_count = blue_count.parse::<i64>().unwrap();
                     if blue_count > least_amount_of_blues {
                         least_amount_of_blues = blue_count;
                     }
@@ -77,7 +77,7 @@ pub fn run(test: bool) -> (u32, u32) {
                 part1 += split_line[0]
                     .get(m.start()..m.end())
                     .unwrap()
-                    .parse::<u32>()
+                    .parse::<i64>()
                     .unwrap();
             }
         }

@@ -9,7 +9,7 @@ use regex::Regex;
 ///!
 
 
-pub fn run(test: bool) -> (u32, u32) {
+pub fn run(test: bool) -> (i64, i64) {
     let data = load_data(3, test);
     let data = data.split('\n').collect::<Vec<_>>();
     let mut part1 = 0;
@@ -24,7 +24,7 @@ pub fn run(test: bool) -> (u32, u32) {
             if char.is_numeric() {
                 current_number.push(char);
                 let min_char_index = if char_index == 0 { 0 } else { char_index - 1 };
-                let max_char_index = if char_index == line.len() {
+                let max_char_index = if char_index == line.len() - 1 {
                     line.len() - 1
                 } else {
                     char_index + 1
@@ -88,7 +88,7 @@ pub fn run(test: bool) -> (u32, u32) {
             }
             if !char.is_numeric() || char_index == line.len() - 1 {
                 if keep_number && !current_number.is_empty() {
-                    part1 += current_number.parse::<u32>().unwrap();
+                    part1 += current_number.parse::<i64>().unwrap();
                     keep_number = false;
                 }
                 current_number.clear();
@@ -105,27 +105,27 @@ pub fn run(test: bool) -> (u32, u32) {
                 vec![]
             } else {
                 numeric.find_iter(data[line_index - 1])
-                    .filter(|m| (m.start() as i32 - position as i32).abs() <= 1 || (m.end() as i32 - position as i32 - 1).abs() <= 1)
-                    .map(|m| data[line_index - 1][m.start()..m.end()].parse::<u32>().unwrap())
+                    .filter(|m| (m.start() as i64 - position as i64).abs() <= 1 || (m.end() as i64 - position as i64 - 1).abs() <= 1)
+                    .map(|m| data[line_index - 1][m.start()..m.end()].parse::<i64>().unwrap())
                     .collect::<Vec<_>>()
             };
             let numbers_on_current_line = numeric.find_iter(line)
                 .filter(|m| m.start() == position + 1 || m.end() == position)
-                .map(|m| line[m.start()..m.end()].parse::<u32>().unwrap())
+                .map(|m| line[m.start()..m.end()].parse::<i64>().unwrap())
                 .collect::<Vec<_>>();
             let numbers_on_next_line = if line_index == data.len() - 1 {
                 vec![]
             } else {
                 numeric.find_iter(data[line_index + 1])
-                    .filter(|m| (m.start() as i32 - position as i32).abs() <= 1 ||(m.end() as i32 - position as i32 - 1).abs() <= 1)
-                    .map(|m| data[line_index + 1][m.start()..m.end()].parse::<u32>().unwrap())
+                    .filter(|m| (m.start() as i64 - position as i64).abs() <= 1 ||(m.end() as i64 - position as i64 - 1).abs() <= 1)
+                    .map(|m| data[line_index + 1][m.start()..m.end()].parse::<i64>().unwrap())
                     .collect::<Vec<_>>()
             };
             if numbers_on_prev_line.len() + numbers_on_current_line.len() + numbers_on_next_line.len() == 2 {
-                part2 += numbers_on_prev_line.iter().product::<u32>() * numbers_on_current_line.iter().product::<u32>() * numbers_on_next_line.iter().product::<u32>();
+                part2 += numbers_on_prev_line.iter().product::<i64>() * numbers_on_current_line.iter().product::<i64>() * numbers_on_next_line.iter().product::<i64>();
             }
         }
     }
 
-    return (part1, part2);
+    return (part1 as i64, part2 as i64);
 }
