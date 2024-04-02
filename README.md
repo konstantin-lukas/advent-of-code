@@ -33,7 +33,7 @@ These are my solutions to the advent of code. I've been doing advent of code eve
 | 1 | 1.1ms <!-- 1027000 --> | [day1.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day1.rs) |
 | 2 | 4.4ms <!-- 4609200 --> | [day2.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day2.rs) |
 | 3 | 243.243ms <!-- 243216000 --> | [day3.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day3.rs) |
-| 4 | 749.749ms <!-- 749640600 --> | [day4.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day4.rs) |
+| 4 | 747.747ms <!-- 747448500 --> | [day4.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day4.rs) |
 | 5 | 124.124μs <!-- 124300 --> | [day5.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day5.rs) |
 | 6 | 26.26μs <!-- 26700 --> | [day6.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day6.rs) |
 <!-- EOT -->
