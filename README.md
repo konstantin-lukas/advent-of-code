@@ -2,12 +2,12 @@
 These are my solutions to the advent of code. I've been doing advent of code even before this public github repo. I mainly do advent of code to learn new languages.
 
 ## Benchmarks
-### 2023 (Rust)
 Benchmarks are run automatically every time the main function is called. The best overall
-time is recorded in the below table. Benchmarks do not include loading data from disk but do
+time is recorded in the table below. Benchmarks do not include loading data from disk but do
 include any kind of transformation on the input. Sometimes part 2 has to repeat steps already
 taken in part 1. This leads to a slightly slower combined time of both parts. These benchmarks
 were executed on an AMD Ryzen 7 7700X.
+### 2023 (Rust)
 <!-- SOT2023 -->
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|
