@@ -11,7 +11,8 @@ were executed on an AMD Ryzen 7 7700X.
 <!-- SOT2023 -->
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|
-| 6 | 1.000μs <!-- 1000 --> | 400ns <!-- 400 --> | [day6.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day6.rs) |
+| 1 | 74.400μs <!-- 74400 --> | 73.600μs <!-- 73600 --> | [day1.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day1.rs) |
+| 6 | 900ns <!-- 900 --> | 400ns <!-- 400 --> | [day6.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day6.rs) |
 <!-- EOT2023 -->
 
 ```
