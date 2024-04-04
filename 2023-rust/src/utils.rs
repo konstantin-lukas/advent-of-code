@@ -16,11 +16,11 @@ pub fn load_data(day: i8) -> String {
 fn get_time_string(elapsed: &Duration) -> String {
     let nanos = elapsed.as_nanos();
     let time_str = if nanos >= 1_000_000_000 {
-        format!("{}.{}s <!-- {} -->", nanos / 1_000_000_000, nanos % 1_000_000_000, nanos)
+        format!("{}.{:03}s <!-- {} -->", nanos / 1_000_000_000, nanos % 1_000_000_000, nanos)
     } else if nanos >= 1_000_000 {
-        format!("{}.{}ms <!-- {} -->", nanos / 1_000_000, nanos % 1_000_000, nanos)
+        format!("{}.{:03}ms <!-- {} -->", nanos / 1_000_000, nanos % 1_000_000, nanos)
     } else if nanos >= 1_000 {
-        format!("{}.{}μs <!-- {} -->", nanos / 1_000, nanos % 1_000, nanos)
+        format!("{}.{:03}μs <!-- {} -->", nanos / 1_000, nanos % 1_000, nanos)
     } else {
         format!("{}ns <!-- {} -->", elapsed.as_nanos(), nanos)
     };
