@@ -96,7 +96,7 @@ pub fn benchmark() {
                     let columns: Vec<_> = rows[&day].2.split('|').filter(|x| return !x.is_empty()).collect();
                     columns[2].trim().to_string()
                 };
-                new_readme.push_str(&format!("| {} | {} | {} | [day{}.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day{}.rs) |\n", day, time_string1, time_string2, day, day));
+                new_readme.push_str(&format!("| {} | {} | {} | [day{:02}.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day{:02}.rs) |\n", day, time_string1, time_string2, day, day));
             } else {
                 new_readme.push_str(rows[&day].2);
                 new_readme.push('\n');
