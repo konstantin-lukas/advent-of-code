@@ -8,8 +8,8 @@ use fancy_regex::Regex;
 ///!
 
 
-pub fn run(test: bool) -> (i64, i64) {
-    let data = load_data(2, test);
+pub fn run() -> (i64, i64) {
+    let data = load_data(2);
     let data = data.split('\n');
     let max_reds = 12;
     let max_greens = 13;

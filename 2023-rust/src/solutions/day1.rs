@@ -23,8 +23,8 @@ fn parse_number(num: &str) -> String {
     num.to_string()
 }
 
-pub fn run(test: bool) -> (i64, i64) {
-    let data = load_data(1, test);
+pub fn run() -> (i64, i64) {
+    let data = load_data(1);
     let data = data.split('\n');
     let mut part1 = 0;
     let mut part2 = 0;

@@ -4,14 +4,17 @@ use std::time::{Instant};
 use crate::solutions;
 use fancy_regex::Regex;
 
-pub fn load_data(day: i8, test: bool) -> String {
-    if test {
-        return fs::read_to_string(format!("example/day{day}")).expect("Cannot load file.");
-    }
+#[cfg(not(test))]
+pub fn load_data(day: i8) -> String {
     fs::read_to_string(format!("data/day{day}")).expect("Cannot load file.")
+}
+#[cfg(test)]
+pub fn load_data(day: i8) -> String {
+    return fs::read_to_string(format!("example/day{day}")).expect("Cannot load file.");
 }
 
 pub fn time() {
+    return;
 
     let readme = fs::read_to_string("../README.md").unwrap();
     let split: Vec<_> = readme.split("<!-- SOT2023 -->\n").collect();
@@ -39,12 +42,12 @@ pub fn time() {
     for day in 1u32..=25 {
         let start = Instant::now();
         let result = match day {
-            1 => Ok(solutions::day1::run(false)),
-            2 => Ok(solutions::day2::run(false)),
-            3 => Ok(solutions::day3::run(false)),
-            4 => Ok(solutions::day4::run(false)),
-            5 => Ok(solutions::day5::run(false)),
-            6 => Ok(solutions::day6::run(false)),
+            1 => Ok(solutions::day1::run()),
+            2 => Ok(solutions::day2::run()),
+            3 => Ok(solutions::day3::run()),
+            4 => Ok(solutions::day4::run()),
+            5 => Ok(solutions::day5::run()),
+            6 => Ok(solutions::day6::run()),
             _ => Err(()),
         };
         let elapsed = start.elapsed();

@@ -9,8 +9,8 @@ use regex::Regex;
 ///!
 
 
-pub fn run(test: bool) -> (i64, i64) {
-    let data = load_data(3, test);
+pub fn run() -> (i64, i64) {
+    let data = load_data(3);
     let data = data.split('\n').collect::<Vec<_>>();
     let mut part1 = 0;
     let mut part2 = 0;

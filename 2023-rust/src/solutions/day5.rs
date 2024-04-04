@@ -16,8 +16,8 @@ fn map_seed(seed: i64, map: &Vec<(i64, i64, i64)>) -> i64 {
     return seed;
 }
 
-pub fn run(test: bool) -> (i64, i64) {
-    let data = load_data(5, test);
+pub fn run() -> (i64, i64) {
+    let data = load_data(5);
     let data = data.split("\n\n").map(String::from);
     let mut maps: [Vec<(i64, i64, i64)>; 7] = Default::default();
     let mut seeds: Vec<i64> = vec![];

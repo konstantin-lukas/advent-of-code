@@ -31,8 +31,8 @@ fn get_scratchcards(t: &(Vec<i64>, Vec<i64>), i: usize, d: &Vec<(Vec<i64>, Vec<i
     return c;
 }
 
-pub fn run(test: bool) -> (i64, i64) {
-    let data = load_data(4, test);
+pub fn run() -> (i64, i64) {
+    let data = load_data(4);
     let data: Vec<(Vec<i64>, Vec<i64>)> = data.split('\n').map(|x| {
         let numbers = &x[x.chars().position(|c| c == ':').unwrap() + 1..];
         let numbers: Vec<&str> = numbers
