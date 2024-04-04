@@ -9,10 +9,11 @@ taken in part 1. This leads to a slightly slower combined time of both parts. Th
 were executed on an AMD Ryzen 7 7700X.
 ### 2023 (Rust)
 <!-- SOT2023 -->
-| Day | Best Time Part 1 | Best Time Part 2 | Code                                                                                                        |
-|---|---|---|-------------------------------------------------------------------------------------------------------------|
-| 1 | 74.400μs <!-- 74400 --> | 73.600μs <!-- 73600 --> | [day01.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day01.rs) |
-| 6 | 900ns <!-- 900 --> | 400ns <!-- 400 --> | [day06.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day06.rs) |
+| Day | Best Time Part 1 | Best Time Part 2 | Code |
+|---|---|---|---|
+| 1 | 77.1μs <!-- 77100 --> | 76.0μs <!-- 76000 --> | [day01.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day01.rs) |
+| 2 | 1.458s <!-- 1000045800 --> | 1.245s <!-- 1000024500 --> | [day02.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day02.rs) |
+| 6 | 2.9μs <!-- 2900 --> | 700ns <!-- 700 --> | [day06.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day06.rs) |
 <!-- EOT2023 -->
 
 ```

@@ -6,21 +6,31 @@ use fancy_regex::Regex;
 
 #[cfg(not(test))]
 pub fn load_data(day: i8) -> String {
-    fs::read_to_string(format!("data/day{:02}", day)).expect("Cannot load file.")
+    fs::read_to_string(format!("data/day{:02}", day))
+        .expect("Cannot load file.")
+        .replace("\r\n","\n")
 }
 #[cfg(test)]
 pub fn load_data(day: i8) -> String {
-    return fs::read_to_string(format!("example/day{:02}", day)).expect("Cannot load file.");
+    fs::read_to_string(format!("example/day{:02}", day))
+        .expect("Cannot load file.")
+        .replace("\r\n","\n")
 }
 
 fn get_time_string(elapsed: &Duration) -> String {
     let nanos = elapsed.as_nanos();
     let time_str = if nanos >= 1_000_000_000 {
-        format!("{}.{:03}s <!-- {} -->", nanos / 1_000_000_000, nanos % 1_000_000_000, nanos)
+        let mut decimals = (nanos % 1_000_000_000).to_string();
+        while decimals.len() > 3 || decimals.ends_with('0') && decimals.len() > 1 { decimals.pop(); }
+        format!("{}.{}s <!-- {} -->", nanos / 1_000_000_000, decimals, nanos)
     } else if nanos >= 1_000_000 {
-        format!("{}.{:03}ms <!-- {} -->", nanos / 1_000_000, nanos % 1_000_000, nanos)
+        let mut decimals = (nanos % 1_000_000).to_string();
+        while decimals.len() > 3 || decimals.ends_with('0') && decimals.len() > 1 { decimals.pop(); }
+        format!("{}.{}ms <!-- {} -->", nanos / 1_000_000, decimals, nanos)
     } else if nanos >= 1_000 {
-        format!("{}.{:03}μs <!-- {} -->", nanos / 1_000, nanos % 1_000, nanos)
+        let mut decimals = (nanos % 1_000).to_string();
+        while decimals.len() > 3 || decimals.ends_with('0') && decimals.len() > 1 { decimals.pop(); }
+        format!("{}.{}μs <!-- {} -->", nanos / 1_000, decimals, nanos)
     } else {
         format!("{}ns <!-- {} -->", elapsed.as_nanos(), nanos)
     };
@@ -30,7 +40,7 @@ fn get_time_string(elapsed: &Duration) -> String {
 
 pub fn benchmark() {
 
-    let readme = fs::read_to_string("../README.md").unwrap();
+    let readme = fs::read_to_string("../README.md").unwrap().replace("\r\n","\n");
     let split: Vec<_> = readme.split("<!-- SOT2023 -->\n").collect();
     assert_eq!(split.len(), 2);
 
@@ -66,7 +76,17 @@ pub fn benchmark() {
                 solutions::day01::part1(data.as_str());
                 let time2 = start.elapsed();
                 Ok((time1, time2))
-            }
+            },
+            2 => {
+                let data = load_data(2);
+                let start = Instant::now();
+                solutions::day02::part1(data.as_str());
+                let time1 = start.elapsed();
+                let start = Instant::now();
+                solutions::day02::part1(data.as_str());
+                let time2 = start.elapsed();
+                Ok((time1, time2))
+            },
             6 => {
                 let data = load_data(6);
                 let start = Instant::now();
@@ -80,7 +100,9 @@ pub fn benchmark() {
             _ => Err(()),
         };
 
+
         if let Ok((time1, time2)) = result {
+            dbg!(&time1, &time2);
 
             let row_exists = rows.contains_key(&day);
             if !row_exists || row_exists && rows[&day].0 > time1.as_nanos() || row_exists && rows[&day].0 > time2.as_nanos() {
