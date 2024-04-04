@@ -6,15 +6,23 @@ use fancy_regex::Regex;
 
 #[cfg(not(test))]
 pub fn load_data(day: i8) -> String {
-    fs::read_to_string(format!("data/day{:02}", day))
+    let mut data = fs::read_to_string(format!("data/day{:02}", day))
         .expect("Cannot load file.")
-        .replace("\r\n","\n")
+        .replace("\r\n","\n");
+    if data.ends_with('\n') {
+        data.pop();
+    }
+    return data;
 }
 #[cfg(test)]
 pub fn load_data(day: i8) -> String {
-    fs::read_to_string(format!("example/day{:02}", day))
+    let mut data = fs::read_to_string(format!("example/day{:02}", day))
         .expect("Cannot load file.")
-        .replace("\r\n","\n")
+        .replace("\r\n","\n");
+    if data.ends_with('\n') {
+        data.pop();
+    }
+    return data;
 }
 
 fn get_time_string(elapsed: &Duration) -> String {
@@ -102,7 +110,6 @@ pub fn benchmark() {
 
 
         if let Ok((time1, time2)) = result {
-            dbg!(&time1, &time2);
 
             let row_exists = rows.contains_key(&day);
             if !row_exists || row_exists && rows[&day].0 > time1.as_nanos() || row_exists && rows[&day].0 > time2.as_nanos() {
