@@ -6,11 +6,11 @@ use fancy_regex::Regex;
 
 #[cfg(not(test))]
 pub fn load_data(day: i8) -> String {
-    fs::read_to_string(format!("data/day{day}")).expect("Cannot load file.")
+    fs::read_to_string(format!("data/day{:02}", day)).expect("Cannot load file.")
 }
 #[cfg(test)]
 pub fn load_data(day: i8) -> String {
-    return fs::read_to_string(format!("example/day{day}")).expect("Cannot load file.");
+    return fs::read_to_string(format!("example/day{:02}", day)).expect("Cannot load file.");
 }
 
 fn get_time_string(elapsed: &Duration) -> String {
@@ -57,13 +57,23 @@ pub fn benchmark() {
     }
     for day in 1u32..=25 {
         let result = match day {
+            1 => {
+                let data = load_data(1);
+                let start = Instant::now();
+                solutions::day01::part1(data.as_str());
+                let time1 = start.elapsed();
+                let start = Instant::now();
+                solutions::day01::part1(data.as_str());
+                let time2 = start.elapsed();
+                Ok((time1, time2))
+            }
             6 => {
                 let data = load_data(6);
                 let start = Instant::now();
-                solutions::day6::part1(data.as_str());
+                solutions::day06::part1(data.as_str());
                 let time1 = start.elapsed();
                 let start = Instant::now();
-                solutions::day6::part1(data.as_str());
+                solutions::day06::part1(data.as_str());
                 let time2 = start.elapsed();
                 Ok((time1, time2))
             },
