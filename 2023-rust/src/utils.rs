@@ -1,6 +1,8 @@
+use std::collections::HashMap;
 use std::fs;
 use std::time::{Instant};
 use crate::solutions;
+use fancy_regex::Regex;
 
 pub fn load_data(day: i8, test: bool) -> String {
     if test {
@@ -12,16 +14,30 @@ pub fn load_data(day: i8, test: bool) -> String {
 pub fn time() {
 
     let readme = fs::read_to_string("../README.md").unwrap();
-    let split: Vec<_> = readme.split("### 2023 (Rust)\n").collect();
+    let split: Vec<_> = readme.split("<!-- SOT2023 -->\n").collect();
     assert_eq!(split.len(), 2);
+
     let mut new_readme = String::from(split[0]);
-    new_readme.push_str("### 2023 (Rust)\n| Day | Fastest Time | Code |\n|---|---|---|\n");
-    let rows: Vec<_> = split[1].split('\n').skip(2).collect();
+    let split: Vec<_> = split[1].split("<!-- EOT2023 -->\n").collect();
+    assert_eq!(split.len(), 2);
 
-
-    for day in 1..=25 {
+    new_readme.push_str("<!-- SOT2023 -->\n| Day | Fastest Time | Code |\n|---|---|---|\n");
+    let mut rows: HashMap<u32, (u128, &str)> = HashMap::new();
+    let row_regex = Regex::new("\\| \\d \\| .* <!-- \\d* --> \\| .* \\|").unwrap();
+    let comment_regex = Regex::new("(?<=<!--)([^-]*?)(?=-->)").unwrap();
+    for row in split[0].split('\n').skip(2) {
+        if row_regex.is_match(row).unwrap() {
+            let columns: Vec<_> = row.split('|').filter(|x| return !x.is_empty()).collect();
+            let day = columns[0].trim().parse::<u32>().unwrap();
+            let time = comment_regex.find(columns[1]).unwrap();
+            if let Some(time) = time {
+                let time = columns[1][time.start()..time.end()].trim().parse::<u128>().unwrap();
+                rows.insert(day, (time, row));
+            }
+        }
+    }
+    for day in 1u32..=25 {
         let start = Instant::now();
-
         let result = match day {
             1 => Ok(solutions::day1::run(false)),
             2 => Ok(solutions::day2::run(false)),
@@ -31,39 +47,14 @@ pub fn time() {
             6 => Ok(solutions::day6::run(false)),
             _ => Err(()),
         };
+        let elapsed = start.elapsed();
+
         if let Ok(_) = result {
-            let elapsed = start.elapsed();
 
-            let row_exists = rows
-                .get(day - 1)
-                .unwrap_or(&"")
-                .split('|')
-                .collect::<Vec<_>>()
-                .get(1)
-                .unwrap_or(&"0")
-                .trim()
-                .parse::<usize>()
-                .unwrap() == day;
-
-            let previous_time = if row_exists {
-                rows[day - 1]
-                    .split("<!-- ")
-                    .collect::<Vec<_>>()
-                    .get(1)
-                    .unwrap_or(&"")
-                    .split(" -->")
-                    .collect::<Vec<_>>()
-                    .get(0)
-                    .unwrap_or(&"")
-                    .parse::<u128>()
-                    .unwrap_or_else(|_| u128::MAX)
-            } else {
-                u128::MAX
-            };
+            let row_exists = rows.contains_key(&day);
 
 
-
-            if !row_exists || row_exists && previous_time > elapsed.as_nanos() {
+            if !row_exists || row_exists && rows[&day].0 > elapsed.as_nanos() {
                 let time_str = if elapsed.as_secs() > 0 {
                     format!("{}s <!-- {} -->", elapsed.as_secs(),elapsed.as_nanos())
                 } else if elapsed.as_millis() > 0 {
@@ -75,7 +66,7 @@ pub fn time() {
                 };
                 new_readme.push_str(&format!("| {} | {} | [day{}.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day{}.rs) |\n", day, time_str, day, day));
             } else {
-                new_readme.push_str(rows[day - 1]);
+                new_readme.push_str(rows[&day].1);
                 new_readme.push('\n');
             }
         }
@@ -83,9 +74,8 @@ pub fn time() {
 
     }
 
-    let split: Vec<_> = split[1].split("<!-- EOT -->").collect();
     assert!(split.len() >= 2);
-    new_readme.push_str("<!-- EOT -->");
+    new_readme.push_str("<!-- EOT2023 -->\n");
     new_readme.push_str(split[1]);
     fs::write("../README.md", new_readme).unwrap();
 
