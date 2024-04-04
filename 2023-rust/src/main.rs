@@ -1,5 +1,7 @@
 pub mod utils;
-pub mod solutions;
+pub mod solutions {
+    pub mod day6;
+}
 
 fn main() {
     /*let (part1, part2) = solutions::day1::run();
