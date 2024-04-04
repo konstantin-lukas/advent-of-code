@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::fs;
-use std::time::{Instant};
+use std::time::{Duration, Instant};
 use crate::solutions;
 use fancy_regex::Regex;
 
@@ -13,8 +13,22 @@ pub fn load_data(day: i8) -> String {
     return fs::read_to_string(format!("example/day{day}")).expect("Cannot load file.");
 }
 
-pub fn time() {
-    return;
+fn get_time_string(elapsed: &Duration) -> String {
+    let nanos = elapsed.as_nanos();
+    let time_str = if nanos >= 1_000_000_000 {
+        format!("{}.{:3}s <!-- {} -->", nanos / 1_000_000_000, nanos % 1_000_000_000, nanos)
+    } else if nanos >= 1_000_000 {
+        format!("{}.{:3}ms <!-- {} -->", nanos / 1_000_000, nanos % 1_000_000, nanos)
+    } else if nanos >= 1_000 {
+        format!("{}.{:3}μs <!-- {} -->", nanos / 1_000, nanos % 1_000, nanos)
+    } else {
+        format!("{}ns <!-- {} -->", elapsed.as_nanos(), nanos)
+    };
+
+    time_str
+}
+
+pub fn benchmark() {
 
     let readme = fs::read_to_string("../README.md").unwrap();
     let split: Vec<_> = readme.split("<!-- SOT2023 -->\n").collect();
@@ -24,52 +38,57 @@ pub fn time() {
     let split: Vec<_> = split[1].split("<!-- EOT2023 -->\n").collect();
     assert_eq!(split.len(), 2);
 
-    new_readme.push_str("<!-- SOT2023 -->\n| Day | Fastest Time | Code |\n|---|---|---|\n");
-    let mut rows: HashMap<u32, (u128, &str)> = HashMap::new();
-    let row_regex = Regex::new("\\| \\d \\| .* <!-- \\d* --> \\| .* \\|").unwrap();
+    new_readme.push_str("<!-- SOT2023 -->\n| Day | Best Time Part 1 | Best Time Part 2 | Code |\n|---|---|---|---|\n");
+    let mut rows: HashMap<u32, (u128, u128, &str)> = HashMap::new();
+    let row_regex = Regex::new("\\| \\d+ \\| .* <!-- \\d* --> \\| .* <!-- \\d* --> \\| .* \\|").unwrap();
     let comment_regex = Regex::new("(?<=<!--)([^-]*?)(?=-->)").unwrap();
     for row in split[0].split('\n').skip(2) {
         if row_regex.is_match(row).unwrap() {
             let columns: Vec<_> = row.split('|').filter(|x| return !x.is_empty()).collect();
             let day = columns[0].trim().parse::<u32>().unwrap();
-            let time = comment_regex.find(columns[1]).unwrap();
-            if let Some(time) = time {
-                let time = columns[1][time.start()..time.end()].trim().parse::<u128>().unwrap();
-                rows.insert(day, (time, row));
+            let time1 = comment_regex.find(columns[1]).unwrap();
+            let time2 = comment_regex.find(columns[2]).unwrap();
+            if let (Some(time1), Some(time2)) = (time1, time2) {
+                let time1 = columns[1][time1.start()..time1.end()].trim().parse::<u128>().unwrap();
+                let time2 = columns[2][time2.start()..time2.end()].trim().parse::<u128>().unwrap();
+                rows.insert(day, (time1, time2, row));
             }
         }
     }
     for day in 1u32..=25 {
-        let start = Instant::now();
         let result = match day {
-            1 => Ok(solutions::day1::run()),
-            2 => Ok(solutions::day2::run()),
-            3 => Ok(solutions::day3::run()),
-            4 => Ok(solutions::day4::run()),
-            5 => Ok(solutions::day5::run()),
-            6 => Ok(solutions::day6::run()),
+            6 => {
+                let data = load_data(6);
+                let start = Instant::now();
+                solutions::day6::part1(data.as_str());
+                let time1 = start.elapsed();
+                let start = Instant::now();
+                solutions::day6::part1(data.as_str());
+                let time2 = start.elapsed();
+                Ok((time1, time2))
+            },
             _ => Err(()),
         };
-        let elapsed = start.elapsed();
 
-        if let Ok(_) = result {
+        if let Ok((time1, time2)) = result {
 
             let row_exists = rows.contains_key(&day);
-
-
-            if !row_exists || row_exists && rows[&day].0 > elapsed.as_nanos() {
-                let time_str = if elapsed.as_secs() > 0 {
-                    format!("{}s <!-- {} -->", elapsed.as_secs(),elapsed.as_nanos())
-                } else if elapsed.as_millis() > 0 {
-                    format!("{}.{}ms <!-- {} -->", elapsed.as_millis(), elapsed.subsec_millis(),elapsed.as_nanos())
-                } else if elapsed.as_micros() > 0 {
-                    format!("{}.{}μs <!-- {} -->", elapsed.as_micros(), elapsed.subsec_micros(),elapsed.as_nanos())
+            if !row_exists || row_exists && rows[&day].0 > time1.as_nanos() || row_exists && rows[&day].0 > time2.as_nanos() {
+                let time_string1 = if !row_exists || rows[&day].0 > time1.as_nanos() {
+                    get_time_string(&time1)
                 } else {
-                    format!("{}.{}ns <!-- {} -->", elapsed.as_nanos(), elapsed.subsec_nanos(),elapsed.as_nanos())
+                    let columns: Vec<_> = rows[&day].2.split('|').filter(|x| return !x.is_empty()).collect();
+                    columns[1].trim().to_string()
                 };
-                new_readme.push_str(&format!("| {} | {} | [day{}.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day{}.rs) |\n", day, time_str, day, day));
+                let time_string2 = if !row_exists || rows[&day].1 > time2.as_nanos() {
+                    get_time_string(&time2)
+                } else {
+                    let columns: Vec<_> = rows[&day].2.split('|').filter(|x| return !x.is_empty()).collect();
+                    columns[2].trim().to_string()
+                };
+                new_readme.push_str(&format!("| {} | {} | {} | [day{}.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day{}.rs) |\n", day, time_string1, time_string2, day, day));
             } else {
-                new_readme.push_str(rows[&day].1);
+                new_readme.push_str(rows[&day].2);
                 new_readme.push('\n');
             }
         }

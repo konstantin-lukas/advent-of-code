@@ -1,6 +1,3 @@
-use crate::utils::load_data;
-
-
 /// Solves x * (y - x) > z for x and calculates all winning strategies
 fn calc_solution(y: f64, z: f64) -> i64 {
     let x = ((y / 2.0) + ((y.powi(2) / 4.0) - z).sqrt()).floor() as i64;
@@ -8,13 +5,7 @@ fn calc_solution(y: f64, z: f64) -> i64 {
 }
 
 
-pub fn part1() {
-
-}
-
-
-pub fn run() -> (i64, i64) {
-    let data = load_data(6);
+pub fn part1(data: &str) -> i64 {
     let data: Vec<_> = data.split("\n").collect();
     let times: Vec<_> = data[0]
         .split_whitespace()
@@ -36,7 +27,11 @@ pub fn run() -> (i64, i64) {
         part1 *= calc_solution(y, z);
     }
 
-    // PART 2
+    part1
+}
+
+pub fn part2(data: &str) -> i64 {
+    let data: Vec<_> = data.split("\n").collect();
     let y = data[0]
         .split_whitespace()
         .skip(1)
@@ -49,7 +44,6 @@ pub fn run() -> (i64, i64) {
         .collect::<String>()
         .parse::<f64>()
         .unwrap() + 1.0;
-    let part2 = calc_solution(y, z);
 
-    (part1, part2)
+    calc_solution(y, z)
 }

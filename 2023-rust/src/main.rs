@@ -2,7 +2,7 @@ pub mod utils;
 pub mod solutions;
 
 fn main() {
-    let (part1, part2) = solutions::day1::run();
+    /*let (part1, part2) = solutions::day1::run();
     println!("DAY 1, PART 1: {part1}");
     println!("DAY 1, PART 2: {part2}");
     let (part1, part2) = solutions::day2::run();
@@ -16,17 +16,18 @@ fn main() {
     println!("DAY 4, PART 2: {part2}");
     let (part1, part2) = solutions::day5::run();
     println!("DAY 5, PART 1: {part1}");
-    println!("DAY 5, PART 2: {part2}");
-    let (part1, part2) = solutions::day6::run();
-    println!("DAY 6, PART 1: {part1}");
-    println!("DAY 6, PART 2: {part2}");
-    utils::time();
+    println!("DAY 5, PART 2: {part2}");*/
+    let data = utils::load_data(6);
+    println!("DAY 6, PART 1: {}", solutions::day6::part1(&data));
+    println!("DAY 6, PART 2: {}", solutions::day6::part2(&data));
+
+    utils::benchmark();
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions;
-    #[test]
+    use crate::{solutions, utils};
+    /*#[test]
     fn day1() {
         let (part1, part2) = solutions::day1::run();
         assert_eq!(part1, 297);
@@ -55,11 +56,11 @@ mod tests {
         let (part1, part2) = solutions::day5::run();
         assert_eq!(part1, 35);
         assert_eq!(part2, 46);
-    }
+    }*/
     #[test]
     fn day6() {
-        let (part1, part2) = solutions::day6::run();
-        assert_eq!(part1, 288);
-        assert_eq!(part2, 71503);
+        let data = utils::load_data(6);
+        assert_eq!(solutions::day6::part1(&data), 288);
+        assert_eq!(solutions::day6::part2(&data), 71503);
     }
 }

@@ -3,15 +3,15 @@ These are my solutions to the advent of code. I've been doing advent of code eve
 
 ## Benchmarks
 ### 2023 (Rust)
+Benchmarks are run automatically every time the main function is called. The best overall
+time is recorded in the below table. Benchmarks do not include loading data from disk but do
+include any kind of transformation on the input. Sometimes part 2 has to repeat steps already
+taken in part 1. This leads to a slightly slower combined time of both parts. These benchmarks
+were executed on an AMD Ryzen 7 7700X.
 <!-- SOT2023 -->
-| Day | Fastest Time | Code |
-|---|---|---|
-| 1 | 1.1ms <!-- 1027000 --> | [day1.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day1.rs) |
-| 2 | 4.4ms <!-- 4466800 --> | [day2.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day2.rs) |
-| 3 | 238.238ms <!-- 238965100 --> | [day3.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day3.rs) |
-| 4 | 747.747ms <!-- 747448500 --> | [day4.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day4.rs) |
-| 5 | 124.124μs <!-- 124300 --> | [day5.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day5.rs) |
-| 6 | 26.26μs <!-- 26400 --> | [day6.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day6.rs) |
+| Day | Best Time Part 1 | Best Time Part 2 | Code |
+|---|---|---|---|
+| 6 | 1.  0μs <!-- 1000 --> | 400ns <!-- 400 --> | [day6.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day6.rs) |
 <!-- EOT2023 -->
 
 ```
