@@ -185,8 +185,8 @@ mod tests {
     #[test]
     fn day04() {
         let data = utils::load_data(4);
-        assert_eq!(solutions::day04::part1(&data), 0);
-        assert_eq!(solutions::day04::part2(&data), 0);
+        assert_eq!(solutions::day04::part1(&data), 13);
+        assert_eq!(solutions::day04::part2(&data), 30);
     }
 
     #[test]
