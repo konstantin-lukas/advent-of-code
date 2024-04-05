@@ -5,7 +5,7 @@ use crate::solutions;
 use fancy_regex::Regex;
 
 #[cfg(not(test))]
-pub fn load_data(day: i8) -> String {
+pub fn load_data(day: u8) -> String {
     let mut data = fs::read_to_string(format!("data/day{:02}", day))
         .expect("Cannot load file.")
         .replace("\r\n","\n");
@@ -15,7 +15,7 @@ pub fn load_data(day: i8) -> String {
     return data;
 }
 #[cfg(test)]
-pub fn load_data(day: i8) -> String {
+pub fn load_data(day: u8) -> String {
     let mut data = fs::read_to_string(format!("example/day{:02}", day))
         .expect("Cannot load file.")
         .replace("\r\n","\n");
@@ -57,13 +57,13 @@ pub fn benchmark() {
     assert_eq!(split.len(), 2);
 
     new_readme.push_str("<!-- SOT2023 -->\n| Day | Best Time Part 1 | Best Time Part 2 | Code |\n|---|---|---|---|\n");
-    let mut rows: HashMap<u32, (u128, u128, &str)> = HashMap::new();
+    let mut rows: HashMap<u8, (u128, u128, &str)> = HashMap::new();
     let row_regex = Regex::new("\\| \\d+ \\| .* <!-- \\d* --> \\| .* <!-- \\d* --> \\| .* \\|").unwrap();
     let comment_regex = Regex::new("(?<=<!--)([^-]*?)(?=-->)").unwrap();
     for row in split[0].split('\n').skip(2) {
         if row_regex.is_match(row).unwrap() {
             let columns: Vec<_> = row.split('|').filter(|x| return !x.is_empty()).collect();
-            let day = columns[0].trim().parse::<u32>().unwrap();
+            let day = columns[0].trim().parse::<u8>().unwrap();
             let time1 = comment_regex.find(columns[1]).unwrap();
             let time2 = comment_regex.find(columns[2]).unwrap();
             if let (Some(time1), Some(time2)) = (time1, time2) {
@@ -73,54 +73,32 @@ pub fn benchmark() {
             }
         }
     }
-    for day in 1u32..=25 {
-        let result = match day {
-            1 => {
-                let data = load_data(1);
-                let start = Instant::now();
-                solutions::day01::part1(data.as_str());
-                let time1 = start.elapsed();
-                let start = Instant::now();
-                solutions::day01::part1(data.as_str());
-                let time2 = start.elapsed();
-                Ok((time1, time2))
-            },
-            2 => {
-                let data = load_data(2);
-                let start = Instant::now();
-                solutions::day02::part1(data.as_str());
-                let time1 = start.elapsed();
-                let start = Instant::now();
-                solutions::day02::part1(data.as_str());
-                let time2 = start.elapsed();
-                Ok((time1, time2))
-            },
-            3 => {
-                let data = load_data(3);
-                let start = Instant::now();
-                solutions::day03::part1(data.as_str());
-                let time1 = start.elapsed();
-                let start = Instant::now();
-                solutions::day03::part1(data.as_str());
-                let time2 = start.elapsed();
-                Ok((time1, time2))
-            },
-            6 => {
-                let data = load_data(6);
-                let start = Instant::now();
-                solutions::day06::part1(data.as_str());
-                let time1 = start.elapsed();
-                let start = Instant::now();
-                solutions::day06::part1(data.as_str());
-                let time2 = start.elapsed();
-                Ok((time1, time2))
-            },
-            _ => Err(()),
+    for day in 1u8..=25 {
+        let data = load_data(day);
+        let start = Instant::now();
+        let time1 = match match day {
+            1 => Some(solutions::day01::part1(data.as_str())),
+            2 => Some(solutions::day02::part1(data.as_str())),
+            3 => Some(solutions::day03::part1(data.as_str())),
+            6 => Some(solutions::day06::part1(data.as_str())),
+            _ => None,
+        } {
+            Some(_) => Some(start.elapsed()),
+            None => None
+        };
+        let start = Instant::now();
+        let time2 = match match day {
+            1 => Some(solutions::day01::part2(data.as_str())),
+            2 => Some(solutions::day02::part2(data.as_str())),
+            3 => Some(solutions::day03::part2(data.as_str())),
+            6 => Some(solutions::day06::part2(data.as_str())),
+            _ => None,
+        } {
+            Some(_) => Some(start.elapsed()),
+            None => None
         };
 
-
-        if let Ok((time1, time2)) = result {
-
+        if let (Some(time1), Some(time2)) = (time1, time2) {
             let row_exists = rows.contains_key(&day);
             if !row_exists || row_exists && rows[&day].0 > time1.as_nanos() || row_exists && rows[&day].0 > time2.as_nanos() {
                 let time_string1 = if !row_exists || rows[&day].0 > time1.as_nanos() {
@@ -141,7 +119,6 @@ pub fn benchmark() {
                 new_readme.push('\n');
             }
         }
-
 
     }
 
