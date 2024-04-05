@@ -1,3 +1,4 @@
+
 pub mod utils;
 pub mod solutions {
     pub mod day01;
@@ -177,8 +178,8 @@ mod tests {
     #[test]
     fn day03() {
         let data = utils::load_data(3);
-        assert_eq!(solutions::day03::part1(&data), 0);
-        assert_eq!(solutions::day03::part2(&data), 0);
+        assert_eq!(solutions::day03::part1(&data), 4361);
+        assert_eq!(solutions::day03::part2(&data), 467835);
     }
 
     #[test]

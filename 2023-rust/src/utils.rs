@@ -95,6 +95,16 @@ pub fn benchmark() {
                 let time2 = start.elapsed();
                 Ok((time1, time2))
             },
+            3 => {
+                let data = load_data(3);
+                let start = Instant::now();
+                solutions::day03::part1(data.as_str());
+                let time1 = start.elapsed();
+                let start = Instant::now();
+                solutions::day03::part1(data.as_str());
+                let time2 = start.elapsed();
+                Ok((time1, time2))
+            },
             6 => {
                 let data = load_data(6);
                 let start = Instant::now();
