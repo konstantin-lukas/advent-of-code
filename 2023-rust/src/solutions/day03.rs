@@ -1,5 +1,5 @@
 pub fn part1(data: &str) -> i64 {
-    let data: Vec<_> = data.split('\n').collect();
+    let data: Vec<_> = data.lines().collect();
     let mut solution = 0;
     for (i, line) in data.iter().enumerate() {
         let mut number_start = 0;
@@ -61,7 +61,7 @@ pub fn part1(data: &str) -> i64 {
 }
 
 pub fn part2(data: &str) -> i64 {
-    let data: Vec<_> = data.split('\n').collect();
+    let data: Vec<_> = data.lines().collect();
     let mut solution = 0;
     let mut numbers = vec![];
     for (i, line) in data.iter().enumerate() {

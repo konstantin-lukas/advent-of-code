@@ -6,22 +6,14 @@ use fancy_regex::Regex;
 
 #[cfg(not(test))]
 pub fn load_data(day: u8) -> String {
-    let mut data = fs::read_to_string(format!("data/day{:02}", day))
-        .expect("Cannot load file.")
-        .replace("\r\n","\n");
-    if data.ends_with('\n') {
-        data.pop();
-    }
+    let data = fs::read_to_string(format!("data/day{:02}", day))
+        .expect("Cannot load file.");
     return data;
 }
 #[cfg(test)]
 pub fn load_data(day: u8) -> String {
-    let mut data = fs::read_to_string(format!("example/day{:02}", day))
-        .expect("Cannot load file.")
-        .replace("\r\n","\n");
-    if data.ends_with('\n') {
-        data.pop();
-    }
+    let data = fs::read_to_string(format!("example/day{:02}", day))
+        .expect("Cannot load file.");
     return data;
 }
 

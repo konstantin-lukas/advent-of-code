@@ -1,8 +1,7 @@
 pub fn part1(data: &str) -> i64 {
-    let data = data.split('\n');
     let mut sum = 0;
 
-    for line in data {
+    for line in data.lines() {
         let first = line.chars().find(|x| x.is_numeric());
         let last = line.chars().rfind(|x| x.is_numeric());
         if let (Some(first), Some(last)) = (first, last) {
@@ -15,10 +14,9 @@ pub fn part1(data: &str) -> i64 {
 }
 
 pub fn part2(data: &str) -> i64 {
-    let data = data.split('\n');
     let mut sum = 0;
 
-    for line in data {
+    for line in data.lines() {
         let mut first = 0;
         let mut last = 0;
 

@@ -3,24 +3,22 @@
 use std::collections::HashMap;
 
 pub fn part1(data: &str) -> i64 {
-    let data = data
-        .split('\n')
-        .map(|x| x.split(':').skip(1).collect::<String>());
     let mut solution = 0;
-    for line in data {
-        let (winning, holding) = line
-            .split_once('|')
-            .map(|(x, y)| (x.trim().split_whitespace(), y.trim().split_whitespace()))
-            .unwrap();
 
-        let count = winning
-            .filter(|&w| holding.clone().any(|h| h == w))
-            .count() as u32;
+    for line in data.lines() {
+        if let Some((winning, holding)) = line.split_once('|') {
+            let count = winning
+                .split_whitespace()
+                .filter(|&w| holding.split_whitespace().any(|h| h == w))
+                .count();
 
-        solution += if count == 0 { 0 } else { 2i64.pow(count - 1) }
+            solution += if count == 0 { 0 } else { 2i64.pow(count as u32 - 1) };
+        }
     }
+
     solution
 }
+
 
 fn get_scratchcards(data: &Vec<(Vec<i64>, Vec<i64>)>, i: usize, memo: &mut HashMap<usize, i64>) -> i64 {
     if let Some(&result) = memo.get(&i) {
@@ -46,9 +44,8 @@ fn get_scratchcards(data: &Vec<(Vec<i64>, Vec<i64>)>, i: usize, memo: &mut HashM
 }
 
 pub fn part2(data: &str) -> i64 {
-    let data = data.split('\n').collect::<Vec<_>>();
     let data = data
-        .iter()
+        .lines()
         .map(|x| x
             .split_once(':')
             .unwrap()

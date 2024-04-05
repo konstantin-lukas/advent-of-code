@@ -1,7 +1,6 @@
 pub fn part1(data: &str) -> i64 {
-    let data = data.split('\n');
     let mut solution = 0;
-    for line in data {
+    for line in data.lines() {
         //let (mut reds, mut greens, mut blues) = (0, 0, 0);
         let mut i = line.len();
         let possible = loop {
@@ -29,9 +28,8 @@ pub fn part1(data: &str) -> i64 {
 }
 
 pub fn part2(data: &str) -> i64 {
-    let data = data.split('\n');
     let mut solution = 0;
-    for line in data {
+    for line in data.lines() {
         let (mut reds, mut greens, mut blues) = (0, 0, 0);
         let mut i = line.len();
         loop {
