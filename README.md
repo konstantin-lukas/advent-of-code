@@ -7,7 +7,7 @@ time is recorded in the table below. Benchmarks do not include loading data from
 include any kind of transformation on the input. Sometimes part 2 has to repeat steps already
 taken in part 1. This leads to a slightly slower combined time of both parts. These benchmarks
 were executed on an AMD Ryzen 7 7700X.
-### 2023 (Rust
+### 2023 (Rust)
 <!-- SOT2023 -->
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|
