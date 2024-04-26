@@ -175,19 +175,6 @@ pub fn part1(data: &str) -> i64 {
     result
 }
 
-fn fill_edges(pipes: &mut Pipes) {
-    let rows = pipes.map.len();
-    let cols = pipes[&0].len();
-
-    for i in 0..rows {
-        for j in 0..cols {
-            if pipes[&i][j] != '_' && (i == 0 || i == rows - 1 || j == 0 || j == cols - 1) {
-                flood_fill(pipes, i, j);
-            }
-        }
-    }
-}
-
 fn flood_fill(pipes: &mut Pipes, row: usize, col: usize) {
     let rows = pipes.map.len();
     let cols = pipes[&0].len();
@@ -233,7 +220,6 @@ pub fn part2(data: &str) -> i64 {
         pipes[&prev.row][prev.col] = '_';
     }
     pipes[&iter.pos.row][iter.pos.col] = '_';
-    fill_edges(&mut pipes);
     let mut iter = PipeIter::new(&pipes_old, get_direction());
     while pipes_old[&iter.pos.row][iter.pos.col] != 'S' {
         let prev = iter.pos.clone();
