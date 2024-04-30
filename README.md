@@ -19,11 +19,12 @@ were executed on an AMD Ryzen 7 7700X.
 | 6 | 700ns <!-- 700 --> | 500ns <!-- 500 --> | [day06.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day06.rs) |
 | 7 | 1.241ms <!-- 1241400 --> | 1.281ms <!-- 1281200 --> | [day07.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day07.rs) |
 | 8 | 330.9μs <!-- 330900 --> | 1.539ms <!-- 1539200 --> | [day08.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day08.rs) |
-| 9 | 121.2μs <!-- 121200 --> | 99.4μs <!-- 99400 --> | [day09.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day09.rs) |
+| 9 | 117.4μs <!-- 117400 --> | 99.4μs <!-- 99400 --> | [day09.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day09.rs) |
 | 10 | 140.9μs <!-- 140900 --> | 674.7μs <!-- 674700 --> | [day10.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day10.rs) |
 | 11 | 719.7μs <!-- 719700 --> | 10.516ms <!-- 10516900 --> | [day11.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day11.rs) |
-| 12 | 593.1μs <!-- 593100 --> | 70.851ms <!-- 70851400 --> | [day12.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day12.rs) |
-| 13 | 239.7μs <!-- 239700 --> | 804.2μs <!-- 804200 --> | [day13.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day13.rs) |
+| 12 | 585.2μs <!-- 585200 --> | 70.851ms <!-- 70851400 --> | [day12.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day12.rs) |
+| 13 | 238.6μs <!-- 238600 --> | 785.2μs <!-- 785200 --> | [day13.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day13.rs) |
+| 14 | 69.6μs <!-- 69600 --> | 28.544ms <!-- 28544400 --> | [day14.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day14.rs) |
 <!-- EOT2023 -->
 
 ```
