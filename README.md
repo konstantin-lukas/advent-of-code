@@ -13,18 +13,19 @@ were executed on an AMD Ryzen 7 7700X.
 |---|---|---|---|
 | 1 | 72.2μs <!-- 72200 --> | 71.3μs <!-- 71300 --> | [day01.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day01.rs) |
 | 2 | 10.3μs <!-- 10300 --> | 9.4μs <!-- 9400 --> | [day02.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day02.rs) |
-| 3 | 233.8μs <!-- 233800 --> | 158.1μs <!-- 158100 --> | [day03.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day03.rs) |
+| 3 | 233.8μs <!-- 233800 --> | 157.8μs <!-- 157800 --> | [day03.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day03.rs) |
 | 4 | 216.2μs <!-- 216200 --> | 159.8μs <!-- 159800 --> | [day04.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day04.rs) |
 | 5 | 26.2μs <!-- 26200 --> | 40.0μs <!-- 40000 --> | [day05.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day05.rs) |
 | 6 | 700ns <!-- 700 --> | 500ns <!-- 500 --> | [day06.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day06.rs) |
-| 7 | 1.241ms <!-- 1241400 --> | 1.281ms <!-- 1281200 --> | [day07.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day07.rs) |
+| 7 | 1.239ms <!-- 1239900 --> | 1.273ms <!-- 1273700 --> | [day07.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day07.rs) |
 | 8 | 330.9μs <!-- 330900 --> | 1.539ms <!-- 1539200 --> | [day08.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day08.rs) |
-| 9 | 117.4μs <!-- 117400 --> | 99.4μs <!-- 99400 --> | [day09.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day09.rs) |
-| 10 | 140.9μs <!-- 140900 --> | 674.7μs <!-- 674700 --> | [day10.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day10.rs) |
+| 9 | 111.0μs <!-- 111000 --> | 97.1μs <!-- 97100 --> | [day09.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day09.rs) |
+| 10 | 135.6μs <!-- 135600 --> | 674.7μs <!-- 674700 --> | [day10.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day10.rs) |
 | 11 | 719.7μs <!-- 719700 --> | 10.516ms <!-- 10516900 --> | [day11.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day11.rs) |
-| 12 | 585.2μs <!-- 585200 --> | 70.851ms <!-- 70851400 --> | [day12.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day12.rs) |
-| 13 | 238.6μs <!-- 238600 --> | 785.2μs <!-- 785200 --> | [day13.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day13.rs) |
-| 14 | 69.6μs <!-- 69600 --> | 28.544ms <!-- 28544400 --> | [day14.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day14.rs) |
+| 12 | 584.5μs <!-- 584500 --> | 70.645ms <!-- 70645900 --> | [day12.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day12.rs) |
+| 13 | 237.4μs <!-- 237400 --> | 785.2μs <!-- 785200 --> | [day13.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day13.rs) |
+| 14 | 65.8μs <!-- 65800 --> | 27.914ms <!-- 27914400 --> | [day14.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day14.rs) |
+| 15 | 216.2μs <!-- 216200 --> | 277.0μs <!-- 277000 --> | [day15.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day15.rs) |
 <!-- EOT2023 -->
 
 ```

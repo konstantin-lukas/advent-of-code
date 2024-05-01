@@ -86,7 +86,7 @@ mod tests {
     test_day!(day12, 21, 525152);
     test_day!(day13, 405, 400);
     test_day!(day14, 136, 64);
-    test_day!(day15, 0, 0);
+    test_day!(day15, 1320, 145);
     test_day!(day16, 0, 0);
     test_day!(day17, 0, 0);
     test_day!(day18, 0, 0);
