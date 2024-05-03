@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 fancy-regex = "0.13.0"
 num = "0.4.1"
+pathfinding = "4.9.1"
