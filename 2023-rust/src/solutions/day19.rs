@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::ops::Deref;
 
 #[derive(Debug)]
@@ -29,6 +29,14 @@ enum Rule<'a> {
     Reject,
     Rule(&'a str),
     Condition(Box<If<'a>>)
+}
+
+#[derive(Debug, Clone, Eq, Hash, PartialEq)]
+struct RangeCollection {
+    x: (i64, i64),
+    m: (i64, i64),
+    a: (i64, i64),
+    s: (i64, i64)
 }
 
 type Workflow<'a> = Vec<Rule<'a>>;
@@ -145,9 +153,125 @@ pub fn part1(data: &str) -> i64 {
         };
         result += value;
     }
-    result
+    return result;
 }
 
-pub fn part2(_data: &str) -> i64 {
-    0
+fn count(
+    ranges: &mut HashSet<RangeCollection>,
+    workflows: &Workflows,
+    workflow: &Workflow,
+    rule_idx: usize,
+    range: RangeCollection
+) {
+    let mut range = range;
+    let rules = &workflow[rule_idx..];
+    for rule in rules {
+        match rule {
+            Rule::Accept => {
+                ranges.insert(range);
+                return;
+            }
+            Rule::Reject => {
+                return;
+            }
+            Rule::Condition(c) => {
+                let (op, val, then, &ch) = match c.deref() {
+                    If { op, val, then, var: ch } => (op, val, then, ch)
+                };
+
+                let mut range_lower = range.clone();
+                let mut range_upper = range.clone();
+
+                if let Op::Lesser = op {
+                    match ch {
+                        'x' => {
+                            range_lower.x.1 = range_lower.x.1.min(val - 1);
+                            range_upper.x.0 = range_upper.x.0.max(*val);
+                        }
+                        'm' => {
+                            range_lower.m.1 = range_lower.m.1.min(val - 1);
+                            range_upper.m.0 = range_upper.m.0.max(*val);
+                        }
+                        'a' => {
+                            range_lower.a.1 = range_lower.a.1.min(val - 1);
+                            range_upper.a.0 = range_upper.a.0.max(*val);
+                        }
+                        's' => {
+                            range_lower.s.1 = range_lower.s.1.min(val - 1);
+                            range_upper.s.0 = range_upper.s.0.max(*val);
+                        }
+                        _ => panic!("Unknown variable"),
+                    }
+                    match then.deref() {
+                        Rule::Accept => {
+                            ranges.insert(range_lower.clone());
+                        }
+                        Rule::Reject => {}
+                        Rule::Rule(r) => {
+                            let w = workflows.get(r).unwrap();
+                            count(ranges, workflows, w, 0, range_lower.clone());
+                        }
+                        _ =>  panic!("Unexpected Rule")
+                    }
+                    range = range_upper.clone();
+                } else if let Op::Greater = op {
+                    match ch {
+                        'x' => {
+                            range_lower.x.1 = range_lower.x.1.min(*val);
+                            range_upper.x.0 = range_upper.x.0.max(val + 1);
+                        }
+                        'm' => {
+                            range_lower.m.1 = range_lower.m.1.min(*val);
+                            range_upper.m.0 = range_upper.m.0.max(val + 1);
+                        }
+                        'a' => {
+                            range_lower.a.1 = range_lower.a.1.min(*val);
+                            range_upper.a.0 = range_upper.a.0.max(val + 1);
+                        }
+                        's' => {
+                            range_lower.s.1 = range_lower.s.1.min(*val);
+                            range_upper.s.0 = range_upper.s.0.max(val + 1);
+                        }
+                        _ => panic!("Unknown variable"),
+                    }
+                    match then.deref() {
+                        Rule::Accept => {
+                            ranges.insert(range_upper.clone());
+                        }
+                        Rule::Reject => {}
+                        Rule::Rule(r) => {
+                            let w = workflows.get(r).unwrap();
+                            count(ranges, workflows, w, 0, range_upper.clone());
+                        }
+                        _ =>  panic!("Unexpected Rule")
+                    }
+                    range = range_lower.clone();
+                } else { panic!("Unknown Operator"); }
+            }
+            Rule::Rule(r) => {
+                let w = workflows.get(r).unwrap();
+                count(ranges, workflows, w, 0, range.clone());
+            }
+        }
+    }
+}
+
+
+pub fn part2(data: &str) -> i64 {
+    let (workflows, ..) = data.split_once("\n\n").or_else(|| data.split_once("\r\n\r\n")).unwrap();
+    let workflows = parse_workflows(workflows);
+    let current_workflow = workflows.get("in").unwrap();
+    let mut ranges: HashSet<RangeCollection> = HashSet::new();
+    let current_range_collection = RangeCollection {
+        x: (1, 4000),
+        m: (1, 4000),
+        a: (1, 4000),
+        s: (1, 4000)
+    };
+    count(&mut ranges, &workflows, &current_workflow, 0, current_range_collection);
+
+    ranges.iter().filter_map(|r| {
+        if r.x.0 > r.x.1 || r.m.0 > r.m.1 || r.a.0 > r.a.1 || r.s.0 > r.s.1 { return None; }
+        Some((r.x.1 - r.x.0 + 1) * (r.m.1 - r.m.0 + 1) * (r.a.1 - r.a.0 + 1) * (r.s.1 - r.s.0 + 1))
+    }).sum()
 }
