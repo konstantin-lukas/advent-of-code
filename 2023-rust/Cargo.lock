@@ -16,6 +16,7 @@ name = "aoc2023-rust"
 version = "0.1.0"
 dependencies = [
  "fancy-regex",
+ "indexmap",
  "num",
  "pathfinding",
 ]

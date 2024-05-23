@@ -88,6 +88,7 @@ pub fn benchmark() {
             17 => Some(solutions::day17::part1(data.as_str())),
             18 => Some(solutions::day18::part1(data.as_str())),
             19 => Some(solutions::day19::part1(data.as_str())),
+            20 => Some(solutions::day20::part1(data.as_str())),
             _ => None,
         } {
             Some(_) => Some(start.elapsed()),
@@ -114,6 +115,7 @@ pub fn benchmark() {
             17 => Some(solutions::day17::part2(data.as_str())),
             18 => Some(solutions::day18::part2(data.as_str())),
             19 => Some(solutions::day19::part2(data.as_str())),
+            20 => Some(solutions::day20::part2(data.as_str())),
             _ => None,
         } {
             Some(_) => Some(start.elapsed()),
