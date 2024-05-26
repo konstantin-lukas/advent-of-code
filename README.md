@@ -32,7 +32,8 @@ were executed on an AMD Ryzen 7 7700X.
 | 19 | 272.0μs <!-- 272000 --> | 316.6μs <!-- 316600 --> | [day19.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day19.rs) |
 | 20 | 1.149ms <!-- 1149800 --> | 5.364ms <!-- 5364400 --> | [day20.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day20.rs) |
 | 21 | 8.56ms <!-- 8560300 --> | 479.8μs <!-- 479800 --> | [day21.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day21.rs) |
-| 22 | 17.672ms <!-- 17672300 --> | 22.309ms <!-- 22309200 --> | [day22.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day22.rs) |
+| 22 | 17.115ms <!-- 17115300 --> | 21.783ms <!-- 21783100 --> | [day22.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day22.rs) |
+| 23 | 8.457ms <!-- 8457400 --> | 2.59s <!-- 2590031100 --> | [day23.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day23.rs) |
 <!-- EOT2023 -->
 
 ```
