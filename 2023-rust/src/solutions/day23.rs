@@ -139,12 +139,12 @@ fn find_nodes(data: &Vec<Vec<char>>) -> Vec<(usize, usize)> {
         let ri = ri + 1;
         for (ci, col) in row[1..row.len() - 1].iter().enumerate() {
             let ci = ci + 1;
-            if *col == '.' {
+            if *col != '#' {
                 let mut paths = 0;
-                if data[ri - 1][ci] == '.' { paths += 1; }
-                if data[ri][ci - 1] == '.' { paths += 1; }
-                if data[ri + 1][ci] == '.' { paths += 1; }
-                if data[ri][ci + 1] == '.' { paths += 1; }
+                if data[ri - 1][ci] != '#' { paths += 1; }
+                if data[ri][ci - 1] != '#' { paths += 1; }
+                if data[ri + 1][ci] != '#' { paths += 1; }
+                if data[ri][ci + 1] != '#' { paths += 1; }
                 if paths > 2 { result.push((ri, ci)) }
             }
         }
@@ -162,10 +162,10 @@ fn calc_weights(
     for &node in nodes {
         let (row, col) = node;
         let mut directions = vec![];
-        if row > 0 && data[row - 1][col] == '.' { directions.push((-1, 0)) }
-        if col > 0 && data[row][col - 1] == '.' { directions.push((0, -1)) }
-        if row < data.len() - 1 && data[row + 1][col] == '.' { directions.push((1, 0)) }
-        if col < data[row].len() - 1 && data[row][col + 1] == '.' { directions.push((0, 1)) }
+        if row > 0 && data[row - 1][col] != '#' { directions.push((-1, 0)) }
+        if col > 0 && data[row][col - 1] != '#' { directions.push((0, -1)) }
+        if row < data.len() - 1 && data[row + 1][col] != '#' { directions.push((1, 0)) }
+        if col < data[row].len() - 1 && data[row][col + 1] != '#' { directions.push((0, 1)) }
         for (next_node, cost) in directions.into_iter().map(|dir| {
             find_distance_to_next_node(node, data, dir, nodes)
         }) {
@@ -202,44 +202,44 @@ fn find_distance_to_next_node(
     while !nodes.contains(&node) {
         match coming_from {
             Direction::UP => {
-                if data[node.0 + 1][node.1] == '.' {
+                if data[node.0 + 1][node.1] != '#' {
                     node.0 += 1;
-                } else if data[node.0][node.1 - 1] == '.' {
+                } else if data[node.0][node.1 - 1] != '#' {
                     node.1 -= 1; coming_from = Direction::RIGHT;
-                } else if data[node.0][node.1 + 1] == '.' {
+                } else if data[node.0][node.1 + 1] != '#' {
                     node.1 += 1; coming_from = Direction::LEFT;
                 } else {
                     panic!();
                 }
             },
             Direction::DOWN => {
-                if data[node.0 - 1][node.1] == '.' {
+                if data[node.0 - 1][node.1] != '#' {
                     node.0 -= 1;
-                } else if data[node.0][node.1 - 1] == '.' {
+                } else if data[node.0][node.1 - 1] != '#' {
                     node.1 -= 1; coming_from = Direction::RIGHT;
-                } else if data[node.0][node.1 + 1] == '.' {
+                } else if data[node.0][node.1 + 1] != '#' {
                     node.1 += 1; coming_from = Direction::LEFT;
                 } else {
                     panic!();
                 }
             },
             Direction::LEFT => {
-                if data[node.0][node.1 + 1] == '.' {
+                if data[node.0][node.1 + 1] != '#' {
                     node.1 += 1;
-                } else if data[node.0 - 1][node.1] == '.' {
+                } else if data[node.0 - 1][node.1] != '#' {
                     node.0 -= 1; coming_from = Direction::DOWN;
-                } else if data[node.0 + 1][node.1] == '.' {
+                } else if data[node.0 + 1][node.1] != '#' {
                     node.0 += 1; coming_from = Direction::UP;
                 } else {
                     panic!();
                 }
             },
             Direction::RIGHT => {
-                if data[node.0][node.1 - 1] == '.' {
+                if data[node.0][node.1 - 1] != '#' {
                     node.1 -= 1;
-                } else if data[node.0 - 1][node.1] == '.' {
+                } else if data[node.0 - 1][node.1] != '#' {
                     node.0 -= 1; coming_from = Direction::DOWN;
-                } else if data[node.0 + 1][node.1] == '.' {
+                } else if data[node.0 + 1][node.1] != '#' {
                     node.0 += 1; coming_from = Direction::UP;
                 } else {
                     panic!();
@@ -310,12 +310,7 @@ fn longest_path(
 }
 
 pub fn part2(data: &str) -> i64 {
-    let mut data = parse(data);
-    for row in data.iter_mut() {
-        for pos in row {
-            if *pos != '#' { *pos = '.'; }
-        }
-    }
+    let data = parse(data);
     let nodes = find_nodes(&data);
     let mut graph = calc_weights(&data, &nodes);
     make_edge_vertices_directed(
