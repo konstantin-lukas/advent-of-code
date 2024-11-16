@@ -8,6 +8,14 @@ include any kind of transformation on the input. Sometimes part 2 has to repeat 
 taken in part 1. This leads to a slightly slower combined time of both parts. These benchmarks
 were executed on an AMD Ryzen 7 7700X.
 ### 2023 (Rust)
+<!-- SOT2022 -->
+| Day | Best Time Part 1 | Best Time Part 2 | Code |
+|---|---|---|---|
+| 1 | 72.2μs <!-- 72200 --> | 71.3μs <!-- 71300 --> | [day01.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day01.rs) |
+| 2 | 10.3μs <!-- 10300 --> | 9.4μs <!-- 9400 --> | [day02.rs](https://github.com/konstantin-lukas/advent-of-code/blob/master/2023-rust/src/solutions/day02.rs) |
+<!-- EOT2022 -->
+
+### 2023 (Rust)
 <!-- SOT2023 -->
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|

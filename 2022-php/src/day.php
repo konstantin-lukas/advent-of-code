@@ -10,4 +10,12 @@ class Day {
         $this->data = file_get_contents(__DIR__."/../data/day".sprintf("%02d", $day));
         $this->testData = file_get_contents(__DIR__."/../example/day".sprintf("%02d", $day));
     }
+
+    public function part1(bool $test): int {
+        return 0;
+    }
+
+    public function part2(bool $test): int {
+        return 0;
+    }
 }
