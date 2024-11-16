@@ -1,13 +1,32 @@
 <?php
 
+$solvedDays = 1;
 // PARSE README FOR TIME TABLE
 $readme = file_get_contents('../README.md');
 $output = preg_split('/<!-- [SE]OT2022 -->/', $readme);
-$table = $output[1];
-echo $table;
+$table = trim($output[1]);
+$rows = explode(PHP_EOL, $table);
+if ($rows[0] !== '| Day | Best Time Part 1 | Best Time Part 2 | Code |' || $rows[1] !== '|---|---|---|---|') {
+    exit(1);
+}
+
+$times = array_map(function($line) {
+    preg_match_all('/(?<=<!--\s)(\d+)(?=\s-->)/', $line, $matches);
+    if (count($matches[0]) !== 2) {
+        echo 'Incorrect number of results';
+        exit(1);
+    }
+    return array_map(fn($result) => (int)$result, $matches[0]);
+}, array_slice($rows, 2));
+
+if (count($times) < $solvedDays) {
+    $times = array_pad($times, $solvedDays, [PHP_INT_MAX, PHP_INT_MAX]);
+}
+
+$newTable = '<!-- SOT2022 -->' . PHP_EOL . $rows[0] . PHP_EOL . $rows[1] . PHP_EOL;
 
 // RUN EACH DAY
-for ($i = 0; $i < 1; $i++) {
+for ($i = 0; $i < $solvedDays; $i++) {
     $paddedNumber = sprintf('%02d', $i + 1);
     $filePath = "src/day$paddedNumber.php";
     require_once $filePath;
@@ -15,6 +34,7 @@ for ($i = 0; $i < 1; $i++) {
     $className = "Day$paddedNumber";
     $day = new $className($i + 1);
 
+    $row = '| ' . ($i + 1) . ' | ';
     for ($j = 1; $j < 3; $j++) {
         // TEST ON EXAMPLE DATA
         $part = 'part'.$j;
@@ -29,6 +49,10 @@ for ($i = 0; $i < 1; $i++) {
         $start = hrtime(true);
         $solution = $day->$part(false);
         $deltaTime = hrtime(true) - $start;
+
+        if ($deltaTime >= $times[$i][$j - 1]) {
+            $deltaTime = $times[$i][$j - 1];
+        }
 
         $decimals = match (true) {
             $deltaTime >= 1_000_000_000 => substr($deltaTime, -9),
@@ -50,6 +74,15 @@ for ($i = 0; $i < 1; $i++) {
             default => sprintf("%dns <!-- %d -->", $deltaTime, $deltaTime),
         };
 
+        $row .= "$newData | ";
+
         echo "Day $paddedNumber, part $j: $solution".PHP_EOL;
     }
+
+    $row .= "[day$paddedNumber.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day$paddedNumber.php) |";
+    $newTable .= $row . PHP_EOL;
 }
+
+$newTable .= '<!-- EOT2022 -->';
+
+file_put_contents('../README.md', $output[0] . $newTable . $output[2]);
