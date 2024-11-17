@@ -1,6 +1,9 @@
 <?php
 
-$solvedDays = 1;
+$dir = "./src";
+$fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
+$solvedDays = iterator_count($fi) - 1;
+
 // PARSE README FOR TIME TABLE
 $readme = file_get_contents('../README.md');
 $output = preg_split('/<!-- [SE]OT2022 -->/', $readme);

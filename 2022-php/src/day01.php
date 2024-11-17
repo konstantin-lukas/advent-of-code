@@ -5,7 +5,7 @@ class Day01 extends Day {
     public ?int $testResultPart1 = 24000;
     public ?int $testResultPart2 = 45000;
 
-    private function getCalories(bool $test) {
+    private function getCalories(bool $test): array {
         $data = $test ? $this->testData : $this->data;
         $elves = explode(PHP_EOL.PHP_EOL, $data);
         return array_map(function($elf) {
