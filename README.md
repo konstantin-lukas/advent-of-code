@@ -11,7 +11,7 @@ were executed on an AMD Ryzen 7 7700X.
 <!-- SOT2022 -->
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|
-| 1 | 138.129μs <!-- 138129 --> | N/A <!-- 9223372036854775807 --> | [day01.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day01.php) |
+| 1 | 124.98μs <!-- 124980 --> | 138.22μs <!-- 138220 --> | [day01.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day01.php) |
 <!-- EOT2022 -->
 
 ### 2023 (Rust)
