@@ -35,12 +35,18 @@ for ($i = 0; $i < $solvedDays; $i++) {
     $day = new $className($i + 1);
 
     $row = '| ' . ($i + 1) . ' | ';
-    for ($j = 1; $j < 3; $j++) {
+    for ($j = 1; $j <= 2; $j++) {
         // TEST ON EXAMPLE DATA
         $part = 'part'.$j;
         $testResult = $day->{"testResultPart$j"};
+
+        if ($testResult === null) {
+            $row .= 'N/A <!-- ' . PHP_INT_MAX . ' --> | ';
+            continue;
+        }
+
         $solution = $day->$part(true);
-        if ($solution !== $testResult) {
+        if ($testResult !== null && $solution !== $testResult) {
             echo "Assertion error on day $i; Expected $testResult but got $solution";
             exit(1);
         }
@@ -76,7 +82,7 @@ for ($i = 0; $i < $solvedDays; $i++) {
 
         $row .= "$newData | ";
 
-        echo "Day $paddedNumber, part $j: $solution".PHP_EOL;
+        echo "Day $paddedNumber, part $j: $solution<br>".PHP_EOL;
     }
 
     $row .= "[day$paddedNumber.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day$paddedNumber.php) |";
