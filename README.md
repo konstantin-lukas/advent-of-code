@@ -12,8 +12,8 @@ were executed on an AMD Ryzen 7 7700X.
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|
 | 1 | 124.29μs <!-- 124290 --> | 137.309μs <!-- 137309 --> | [day01.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day01.php) |
-| 2 | 333.698μs <!-- 333698 --> | 297.567μs <!-- 297567 --> | [day02.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day02.php) |
-| 3 | 662.244μs <!-- 662244 --> | N/A <!-- 9223372036854775807 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
+| 2 | 333.698μs <!-- 333698 --> | 297.517μs <!-- 297517 --> | [day02.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day02.php) |
+| 3 | 624.255μs <!-- 624255 --> | 592.294μs <!-- 592294 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
 <!-- EOT2022 -->
 
 ### 2023 (Rust)
