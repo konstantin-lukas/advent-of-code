@@ -4,14 +4,14 @@ require_once "day.php";
 class Day02 extends Day {
 
     public ?int $testResultPart1 = 15;
+    public ?int $testResultPart2 = 12;
 
     private function parse(bool $test): array {
         $data = $test ? $this->testData : $this->data;
         $lines = explode(PHP_EOL, $data);
-        $rounds = array_map(function ($line) {
+        return array_map(function ($line) {
             return explode(' ', $line);
         }, $lines);
-        return $rounds;
     }
 
     public function part1(bool $test): int {
@@ -46,6 +46,33 @@ class Day02 extends Day {
     }
 
     public function part2(bool $test): int {
-        return 0;
+        $data = $this->parse($test);
+        $results = array_map(function ($round) {
+            [$first, $second] = $round;
+            $resultScore = match ($second) {
+                'X' => 0,
+                'Y' => 3,
+                'Z' => 6,
+            };
+            $handScore = match ($second) {
+                'X' => match ($first) {
+                    'A' => 3,
+                    'B' => 1,
+                    'C' => 2,
+                },
+                'Y' => match ($first) {
+                    'A' => 1,
+                    'B' => 2,
+                    'C' => 3,
+                },
+                'Z' => match ($first) {
+                    'A' => 2,
+                    'B' => 3,
+                    'C' => 1,
+                },
+            };
+            return $handScore + $resultScore;
+        }, $data);
+        return array_sum($results);
     }
 }

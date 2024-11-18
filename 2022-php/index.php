@@ -50,7 +50,7 @@ for ($i = 0; $i < $solvedDays; $i++) {
 
         $solution = $day->$part(true);
         if ($testResult !== null && $solution !== $testResult) {
-            echo "Assertion error on day $i; Expected $testResult but got $solution";
+            echo sprintf("Assertion error on day%d $part; Expected $testResult but got $solution", $i + 1);
             exit(1);
         }
 
