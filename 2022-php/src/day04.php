@@ -3,6 +3,7 @@ require_once "day.php";
 class Day04 extends Day {
 
     public ?int $testResultPart1 = 2;
+    public ?int $testResultPart2 = 4;
 
     private function parse(bool $test): array
     {
@@ -23,6 +24,9 @@ class Day04 extends Day {
     }
 
     public function part2(bool $test): int {
-        return 0;
+        return count(array_filter($this->parse($test), function ($range) {
+            [$left, $right] = $range;
+            return $left[0] <= $right[1] && $left[1] >= $right[0];
+        }));
     }
 }
