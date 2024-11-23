@@ -4,6 +4,7 @@ require_once "day.php";
 class Day05 extends Day {
 
     public mixed $testResultPart1 = "CMZ";
+    public mixed $testResultPart2 = "MCD";
 
     private function parse(bool $test): array
     {
@@ -49,6 +50,17 @@ class Day05 extends Day {
     }
 
     public function part2(bool $test): string {
-        return "";
+        [$stacks, $moves] = $this->parse($test);
+        foreach ($moves as $move) {
+            $arr = &$stacks[$move["from"]];
+            $cnt = $move["count"];
+            $elems = array_splice($arr, count($arr) - $cnt, $cnt);
+            array_push($stacks[$move["to"]], ...$elems);
+        }
+        $topContainers = array_map(function ($stack) {
+            return end($stack);
+        }, $stacks);
+
+        return implode($topContainers);
     }
 }
