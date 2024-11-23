@@ -2,8 +2,8 @@
 require_once "day.php";
 class Day03 extends Day {
 
-    public ?int $testResultPart1 = 157;
-    public ?int $testResultPart2 = 70;
+    public mixed $testResultPart1 = 157;
+    public mixed $testResultPart2 = 70;
 
     private function getPriority(string $c): int
     {

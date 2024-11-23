@@ -3,8 +3,8 @@ require_once "day.php";
 
 class Day02 extends Day {
 
-    public ?int $testResultPart1 = 15;
-    public ?int $testResultPart2 = 12;
+    public mixed $testResultPart1 = 15;
+    public mixed $testResultPart2 = 12;
 
     private function parse(bool $test): array {
         $data = $test ? $this->testData : $this->data;

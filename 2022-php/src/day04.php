@@ -2,8 +2,8 @@
 require_once "day.php";
 class Day04 extends Day {
 
-    public ?int $testResultPart1 = 2;
-    public ?int $testResultPart2 = 4;
+    public mixed $testResultPart1 = 2;
+    public mixed $testResultPart2 = 4;
 
     private function parse(bool $test): array
     {
@@ -16,14 +16,16 @@ class Day04 extends Day {
         }, $lines);
     }
 
-    public function part1(bool $test): int {
+    public function part1(bool $test): int
+    {
         return count(array_filter($this->parse($test), function ($range) {
             [$left, $right] = $range;
             return $left[0] >= $right[0] && $left[1] <= $right[1] || $right[0] >= $left[0] && $right[1] <= $left[1];
         }));
     }
 
-    public function part2(bool $test): int {
+    public function part2(bool $test): int
+    {
         return count(array_filter($this->parse($test), function ($range) {
             [$left, $right] = $range;
             return $left[0] <= $right[1] && $left[1] >= $right[0];

@@ -2,8 +2,8 @@
 require_once "day.php";
 class Day01 extends Day {
 
-    public ?int $testResultPart1 = 24000;
-    public ?int $testResultPart2 = 45000;
+    public mixed $testResultPart1 = 24000;
+    public mixed $testResultPart2 = 45000;
 
     private function getCalories(bool $test): array {
         $data = $test ? $this->testData : $this->data;

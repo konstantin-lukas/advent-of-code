@@ -11,10 +11,11 @@ were executed on an AMD Ryzen 7 7700X.
 <!-- SOT2022 -->
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|
-| 1 | 124.29μs <!-- 124290 --> | 137.309μs <!-- 137309 --> | [day01.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day01.php) |
+| 1 | 123.249μs <!-- 123249 --> | 137.249μs <!-- 137249 --> | [day01.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day01.php) |
 | 2 | 333.698μs <!-- 333698 --> | 297.517μs <!-- 297517 --> | [day02.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day02.php) |
 | 3 | 613.695μs <!-- 613695 --> | 590.375μs <!-- 590375 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
 | 4 | 467.777μs <!-- 467777 --> | 440.796μs <!-- 440796 --> | [day04.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day04.php) |
+| 5 | 232.368μs <!-- 232368 --> | N/A <!-- 9223372036854775807 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
 <!-- EOT2022 -->
 
 ### 2023 (Rust)
