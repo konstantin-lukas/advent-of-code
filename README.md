@@ -15,9 +15,9 @@ were executed on an AMD Ryzen 7 7700X.
 | 2 | 333.047μs <!-- 333047 --> | 295.457μs <!-- 295457 --> | [day02.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day02.php) |
 | 3 | 613.695μs <!-- 613695 --> | 584.005μs <!-- 584005 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
 | 4 | 459.226μs <!-- 459226 --> | 436.467μs <!-- 436467 --> | [day04.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day04.php) |
-| 5 | 184.058μs <!-- 184058 --> | 162.639μs <!-- 162639 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
-| 6 | 191.308μs <!-- 191308 --> | 940.232μs <!-- 940232 --> | [day06.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day06.php) |
-| 7 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day07.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day07.php) |
+| 5 | 184.058μs <!-- 184058 --> | 162.338μs <!-- 162338 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
+| 6 | 189.038μs <!-- 189038 --> | 940.232μs <!-- 940232 --> | [day06.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day06.php) |
+| 7 | 148.379μs <!-- 148379 --> | N/A <!-- 9223372036854775807 --> | [day07.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day07.php) |
 | 8 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day08.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day08.php) |
 | 9 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day09.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day09.php) |
 | 10 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day10.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day10.php) |
