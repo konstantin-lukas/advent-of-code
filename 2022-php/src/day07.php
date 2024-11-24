@@ -10,14 +10,10 @@ class File {
     public function __construct(public int $size, public string $name, public Dir &$parent) {}
 }
 
-class Command {
-    public string $name;
-    public string $arg;
-}
-
 class Day07 extends Day {
 
     public mixed $testResultPart1 = 95437;
+    public mixed $testResultPart2 = 24933642;
 
     private function parse(bool $test): Dir
     {
@@ -73,6 +69,14 @@ class Day07 extends Day {
     }
 
     public function part2(bool $test): int {
-        return 0;
+        $diskSpace = 70_000_000;
+        $neededSpace = 30_000_000;
+        $root = $this->parse($test);
+        $dirSizes = [];
+        $usedSpace = $this->traverse($root, $dirSizes);
+        $unusedSpace = $diskSpace - $usedSpace;
+        $requiredSpace = $neededSpace - $unusedSpace;
+        $potentialDirs = array_filter($dirSizes, fn ($x) => $x >= $requiredSpace);
+        return min($potentialDirs);
     }
 }
