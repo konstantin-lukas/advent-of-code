@@ -12,10 +12,11 @@ were executed on an AMD Ryzen 7 7700X.
 | Day | Best Time Part 1 | Best Time Part 2 | Code |
 |---|---|---|---|
 | 1 | 123.249μs <!-- 123249 --> | 137.249μs <!-- 137249 --> | [day01.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day01.php) |
-| 2 | 333.467μs <!-- 333467 --> | 297.517μs <!-- 297517 --> | [day02.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day02.php) |
-| 3 | 613.695μs <!-- 613695 --> | 590.375μs <!-- 590375 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
-| 4 | 467.777μs <!-- 467777 --> | 440.796μs <!-- 440796 --> | [day04.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day04.php) |
-| 5 | 185.358μs <!-- 185358 --> | 163.578μs <!-- 163578 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
+| 2 | 333.467μs <!-- 333467 --> | 297.397μs <!-- 297397 --> | [day02.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day02.php) |
+| 3 | 613.695μs <!-- 613695 --> | 584.005μs <!-- 584005 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
+| 4 | 460.356μs <!-- 460356 --> | 437.256μs <!-- 437256 --> | [day04.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day04.php) |
+| 5 | 184.058μs <!-- 184058 --> | 162.809μs <!-- 162809 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
+| 6 | 192.759μs <!-- 192759 --> | N/A <!-- 9223372036854775807 --> | [day06.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day06.php) |
 <!-- EOT2022 -->
 
 ### 2023 (Rust)
