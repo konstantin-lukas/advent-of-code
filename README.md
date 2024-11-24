@@ -14,9 +14,28 @@ were executed on an AMD Ryzen 7 7700X.
 | 1 | 123.249μs <!-- 123249 --> | 137.249μs <!-- 137249 --> | [day01.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day01.php) |
 | 2 | 333.047μs <!-- 333047 --> | 295.457μs <!-- 295457 --> | [day02.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day02.php) |
 | 3 | 613.695μs <!-- 613695 --> | 584.005μs <!-- 584005 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
-| 4 | 460.356μs <!-- 460356 --> | 437.256μs <!-- 437256 --> | [day04.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day04.php) |
-| 5 | 184.058μs <!-- 184058 --> | 162.718μs <!-- 162718 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
+| 4 | 459.226μs <!-- 459226 --> | 436.467μs <!-- 436467 --> | [day04.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day04.php) |
+| 5 | 184.058μs <!-- 184058 --> | 162.639μs <!-- 162639 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
 | 6 | 191.308μs <!-- 191308 --> | 940.232μs <!-- 940232 --> | [day06.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day06.php) |
+| 7 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day07.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day07.php) |
+| 8 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day08.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day08.php) |
+| 9 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day09.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day09.php) |
+| 10 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day10.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day10.php) |
+| 11 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day11.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day11.php) |
+| 12 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day12.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day12.php) |
+| 13 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day13.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day13.php) |
+| 14 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day14.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day14.php) |
+| 15 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day15.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day15.php) |
+| 16 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day16.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day16.php) |
+| 17 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day17.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day17.php) |
+| 18 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day18.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day18.php) |
+| 19 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day19.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day19.php) |
+| 20 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day20.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day20.php) |
+| 21 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day21.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day21.php) |
+| 22 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day22.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day22.php) |
+| 23 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day23.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day23.php) |
+| 24 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day24.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day24.php) |
+| 25 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day25.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day25.php) |
 <!-- EOT2022 -->
 
 ### 2023 (Rust)
