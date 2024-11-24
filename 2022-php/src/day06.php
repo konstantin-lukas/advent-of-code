@@ -4,17 +4,23 @@ require_once "day.php";
 class Day06 extends Day {
 
     public mixed $testResultPart1 = 7;
+    public mixed $testResultPart2 = 19;
 
-    public function part1(bool $test): int {
+    private function solve(bool $test, int $length): int
+    {
         $data = $test ? $this->testData : $this->data;
-        for ($i = 4; $i < strlen($data); $i++) {
-            $sequence = substr($data, $i - 4, 4);
-            if (count(array_unique(str_split($sequence))) === 4) break;
+        for ($i = $length; $i < strlen($data); $i++) {
+            $sequence = substr($data, $i - $length, $length);
+            if (count(array_unique(str_split($sequence))) === $length) break;
         }
         return $i;
     }
 
+    public function part1(bool $test): int {
+        return $this->solve($test, 4);
+    }
+
     public function part2(bool $test): int {
-        return 0;
+        return $this->solve($test, 14);
     }
 }
