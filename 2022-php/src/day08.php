@@ -4,6 +4,7 @@ require_once "day.php";
 class Day08 extends Day {
 
     public mixed $testResultPart1 = 21;
+    public mixed $testResultPart2 = 8;
 
     private function parse(bool $test): array {
         $data = $test ? $this->testData : $this->data;
@@ -84,6 +85,55 @@ class Day08 extends Day {
     }
 
     public function part2(bool $test): int {
-        return 0;
+        $data = $this->parse($test);
+        $scenicScores = [];
+        $rowCount = count($data);
+        $colCount = count($data[0]);
+        for ($row = 0; $row < $rowCount; $row++) {
+            for ($col = 0; $col < $colCount; $col++) {
+                $visible = [
+                    "top" => 0,
+                    "left" => 0,
+                    "right" => 0,
+                    "bottom" => 0,
+                ];
+                $height = $data[$row][$col];
+
+                // RIGHT
+                for ($i = $col + 1; $i < $colCount; $i++) {
+                    $visible["right"]++;
+                    if ($data[$row][$i] >= $height) {
+                        break;
+                    }
+                }
+
+                // LEFT
+                for ($i = $col - 1; $i >= 0; $i--) {
+                    $visible["left"]++;
+                    if ($data[$row][$i] >= $height) {
+                        break;
+                    }
+                }
+
+                // BOTTOM
+                for ($i = $row + 1; $i < $rowCount; $i++) {
+                    $visible["bottom"]++;
+                    if ($data[$i][$col] >= $height) {
+                        break;
+                    }
+                }
+
+                // TOP
+                for ($i = $row - 1; $i >= 0; $i--) {
+                    $visible["top"]++;
+                    if ($data[$i][$col] >= $height) {
+                        break;
+                    }
+                }
+
+                $scenicScores[] = $visible["top"] * $visible["left"] * $visible["right"] * $visible["bottom"];
+            }
+        }
+        return max($scenicScores);
     }
 }
