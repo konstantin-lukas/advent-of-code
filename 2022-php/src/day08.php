@@ -86,7 +86,7 @@ class Day08 extends Day {
 
     public function part2(bool $test): int {
         $data = $this->parse($test);
-        $scenicScores = [];
+        $maxScenicScore = 0;
         $rowCount = count($data);
         $colCount = count($data[0]);
         for ($row = 0; $row < $rowCount; $row++) {
@@ -131,9 +131,12 @@ class Day08 extends Day {
                     }
                 }
 
-                $scenicScores[] = $visible["top"] * $visible["left"] * $visible["right"] * $visible["bottom"];
+                $scenicScore = $visible["top"] * $visible["left"] * $visible["right"] * $visible["bottom"];
+                if ($scenicScore > $maxScenicScore) {
+                    $maxScenicScore = $scenicScore;
+                }
             }
         }
-        return max($scenicScores);
+        return $maxScenicScore;
     }
 }
