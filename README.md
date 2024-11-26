@@ -21,7 +21,7 @@ were executed on an AMD Ryzen 7 7700X.
 | 8 | 1.742ms <!-- 1742281 --> | 2.303ms <!-- 2303361 --> | [day08.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day08.php) |
 | 9 | 1.524ms <!-- 1524767 --> | 3.216ms <!-- 3216365 --> | [day09.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day09.php) |
 | 10 | 11.83μs <!-- 11830 --> | 16.209μs <!-- 16209 --> | [day10.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day10.php) |
-| 11 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day11.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day11.php) |
+| 11 | 128.358μs <!-- 128358 --> | N/A <!-- 9223372036854775807 --> | [day11.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day11.php) |
 | 12 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day12.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day12.php) |
 | 13 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day13.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day13.php) |
 | 14 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day14.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day14.php) |
