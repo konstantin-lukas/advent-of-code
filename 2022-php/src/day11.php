@@ -15,6 +15,7 @@ class Monkey {
 
 class Day11 extends Day {
     public mixed $testResultPart1 = 10605;
+    public mixed $testResultPart2 = 2713310158;
 
     private function parse(bool $test): array
     {
@@ -59,7 +60,41 @@ class Day11 extends Day {
         return $inspectCounts[0] * $inspectCounts[1];
     }
 
+    private static function gcd(int $a, int $b): int {
+        return $b === 0 ? $a : self::gcd($b, $a % $b);
+    }
+
+    private static function lcm(int $a, int $b): int {
+        return ($a * $b) / self::gcd($a, $b);
+    }
+
     public function part2(bool $test): int {
-        return 0;
+        $monkeys = $this->parse($test);
+        $lcm = 1;
+        foreach ($monkeys as $monkey) {
+            $lcm = self::lcm($lcm, $monkey->conditional);
+        }
+        for ($round = 0; $round < 10000; $round++) {
+            foreach ($monkeys as $monkey) {
+                while ($item = array_shift($monkey->items)) {
+                    $monkey->inspectCount++;
+                    $factor = $monkey->factor === null ? $item : $monkey->factor;
+                    if ($monkey->multiply) {
+                        $item *= $factor;
+                    } else {
+                        $item += $factor;
+                    }
+                    $item %= $lcm;
+                    if ($item % $monkey->conditional === 0) {
+                        $monkeys[$monkey->trueMonkey]->items[] = $item;
+                    } else {
+                        $monkeys[$monkey->falseMonkey]->items[] = $item;
+                    }
+                }
+            }
+        }
+        $inspectCounts = array_map(fn ($monkey) => $monkey->inspectCount, $monkeys);
+        rsort($inspectCounts);
+        return $inspectCounts[0] * $inspectCounts[1];
     }
 }
