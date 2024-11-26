@@ -4,6 +4,13 @@ require_once "day.php";
 class Day10 extends Day {
 
     public mixed $testResultPart1 = 13140;
+    public mixed $testResultPart2 =
+        PHP_EOL."##..##..##..##..##..##..##..##..##..##..".
+        PHP_EOL."###...###...###...###...###...###...###.".
+        PHP_EOL."####....####....####....####....####....".
+        PHP_EOL."#####.....#####.....#####.....#####.....".
+        PHP_EOL."######......######......######......####".
+        PHP_EOL."#######.......#######.......#######.....";
 
     private function parse(bool $test): array {
         $data = $test ? $this->testData : $this->data;
@@ -34,7 +41,21 @@ class Day10 extends Day {
         return $result;
     }
 
-    public function part2(bool $test): int {
-        return 0;
+    public function part2(bool $test): string {
+        $instructions = $this->parse($test);
+        $result = "";
+        $register = 1;
+        $cycle = 0;
+        for ($i = 0; $i < count($instructions); $i++) {
+            $result .= abs($register - ($cycle % 40)) <= 1 ? "#" : '.';
+            if ($instructions[$i] === 0) {
+                $cycle++;
+            } else {
+                $result .= abs($register - (($cycle + 1) % 40)) <= 1 ? "#" : '.';
+                $cycle += 2;
+                $register += $instructions[$i];
+            }
+        }
+        return PHP_EOL . join(PHP_EOL, str_split($result, 40));
     }
 }

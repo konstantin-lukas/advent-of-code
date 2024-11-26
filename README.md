@@ -16,11 +16,11 @@ were executed on an AMD Ryzen 7 7700X.
 | 3 | 613.695μs <!-- 613695 --> | 582.515μs <!-- 582515 --> | [day03.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day03.php) |
 | 4 | 459.226μs <!-- 459226 --> | 436.467μs <!-- 436467 --> | [day04.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day04.php) |
 | 5 | 183.399μs <!-- 183399 --> | 160.728μs <!-- 160728 --> | [day05.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day05.php) |
-| 6 | 186.848μs <!-- 186848 --> | 933.743μs <!-- 933743 --> | [day06.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day06.php) |
+| 6 | 185.209μs <!-- 185209 --> | 933.743μs <!-- 933743 --> | [day06.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day06.php) |
 | 7 | 147.759μs <!-- 147759 --> | 144.739μs <!-- 144739 --> | [day07.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day07.php) |
 | 8 | 1.742ms <!-- 1742281 --> | 2.303ms <!-- 2303361 --> | [day08.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day08.php) |
 | 9 | 1.524ms <!-- 1524767 --> | 3.216ms <!-- 3216365 --> | [day09.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day09.php) |
-| 10 | 11.88μs <!-- 11880 --> | N/A <!-- 9223372036854775807 --> | [day10.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day10.php) |
+| 10 | 11.83μs <!-- 11830 --> | 16.209μs <!-- 16209 --> | [day10.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day10.php) |
 | 11 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day11.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day11.php) |
 | 12 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day12.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day12.php) |
 | 13 | N/A <!-- 9223372036854775807 --> | N/A <!-- 9223372036854775807 --> | [day13.php](https://github.com/konstantin-lukas/advent-of-code/blob/master/2022-php/src/day13.php) |
